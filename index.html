@@ -885,7 +885,7 @@ input, select, textarea { color: #000000 !important; font-weight: 600; }
                  <div class="card-white p-12 space-y-12 shadow-2xl border-blue-50 font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-black uppercase text-[10px] tracking-widest leading-none font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
                         <div class="space-y-4 text-slate-400 font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><h4 class="text-lg font-black dark:text-white text-slate-900 font-black uppercase leading-none uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><i class="fa-solid fa-percent text-blue-600 mr-2 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></i>Tax hub</h4><div class="p-6 bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 rounded-3xl shadow-inner font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><label class="block mb-3 text-slate-400 leading-none font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase">Vat Rate %</label><input type="number" id="settingVatRate" onchange="saveSettings()" class="w-full input-light text-3xl text-slate-900 dark:text-white font-black shadow-inner font-mono font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></div></div>
-                        <div class="space-y-4 text-slate-400 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><h4 class="text-lg font-black dark:text-white text-slate-900 font-black uppercase leading-none uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><i class="fa-solid fa-floppy-disk text-emerald-600 mr-2 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></i>Infrastructure</h4><div class="grid grid-cols-1 gap-3 font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><button onclick="exportAllAppData()" class="w-full p-6 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Save full snapshot</button><button onclick="confirmImport(\'snapshotImportInput\', \'Importing a full snapshot will replace your current local session data. Continue?\')" class="w-full p-6 bg-blue-50 text-blue-700 border-2 border-blue-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase shadow-sm">Import full snapshot</button><button onclick="openClearAllDataModal()" class="w-full p-6 bg-red-50 text-red-700 border-2 border-red-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Kill local session</button></div></div>
+                        <div class="space-y-4 text-slate-400 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><h4 class="text-lg font-black dark:text-white text-slate-900 font-black uppercase leading-none uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><i class="fa-solid fa-floppy-disk text-emerald-600 mr-2 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></i>Infrastructure</h4><div class="grid grid-cols-1 gap-3 font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase"><button onclick="exportAllAppData()" class="w-full p-6 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Save full snapshot</button><button onclick="confirmImport('snapshotImportInput', 'Importing a full snapshot will replace your current local session data. Continue?')" class="w-full p-6 bg-blue-50 text-blue-700 border-2 border-blue-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase shadow-sm">Import full snapshot</button><button onclick="openClearAllDataModal()" class="w-full p-6 bg-red-50 text-red-700 border-2 border-red-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Kill local session</button></div></div>
                     </div>
                 </div>
             </div>
@@ -2585,8 +2585,64 @@ function openGentleConfirmModal(msg, onConfirm, confirmText = "Continue") {
 
 function confirmImport(inputId, msg){
     openGentleConfirmModal(msg, () => {
-        const el = document.getElementById(inputId);
-        if(el) el.click();
+        const original = document.getElementById(inputId);
+        const accept = original?.getAttribute('accept') || '';
+
+        // Create a fresh picker each time (most reliable on iOS/Safari + prevents "same file" not firing change)
+        const temp = document.createElement('input');
+        temp.type = 'file';
+        if(accept) temp.setAttribute('accept', accept);
+
+        // Keep it "clickable" for iOS (not display:none), but invisible/off-screen
+        temp.style.position = 'fixed';
+        temp.style.left = '-9999px';
+        temp.style.top = '0';
+        temp.style.opacity = '0.001';
+        temp.style.width = '1px';
+        temp.style.height = '1px';
+        temp.style.zIndex = '999999';
+
+        temp.addEventListener('change', () => {
+            const f = temp.files && temp.files[0];
+            if(!f) { temp.remove(); return; }
+
+            // Prefer going through existing onchange handlers
+            let dispatched = false;
+            if(original){
+                try {
+                    const dt = new DataTransfer();
+                    dt.items.add(f);
+                    original.files = dt.files;
+                    original.dispatchEvent(new Event('change', { bubbles: true }));
+                    dispatched = true;
+                } catch(e) {
+                    dispatched = false;
+                }
+            }
+
+            // Fallback: call the handlers directly
+            if(!dispatched){
+                if(inputId === 'snapshotImportInput') {
+                    importFullSnapshot(f);
+                } else if(inputId === 'stockTakeImportInput') {
+                    handleFile(f, 'stocktake');
+                } else if(inputId === 'productImportInput') {
+                    handleFile(f, 'product');
+                } else if(inputId === 'ingredientsImportInput') {
+                    handleFile(f, 'ingredients');
+                } else if(inputId === 'recipeImportInput') {
+                    handleFile(f, 'recipe');
+                } else if(inputId === 'mfgImportInput') {
+                    handleFile(f, 'mfg');
+                }
+            }
+
+            temp.value = '';
+            temp.remove();
+        }, { once: true });
+
+        document.body.appendChild(temp);
+        temp.click();
     }, "Select file");
 }
 
@@ -2794,6 +2850,31 @@ function addIngToMfgFinal() {
         }
 
         function processImportData(data, type) {
+  // --- Added: Stock Take spreadsheet import handling ---
+  if (type === 'stocktake') {
+    // Loads draft shelf counts (does not commit balances automatically)
+    if (typeof stockCountDraft !== 'object' || stockCountDraft === null) stockCountDraft = {};
+
+    (data || []).forEach(row => {
+      const id = String(row.ID ?? row.Id ?? row.id ?? '').trim();
+      if (!id) return;
+
+      const shelfRaw = row.Shelf_Count ?? row['Shelf Count'] ?? row.ShelfCount ?? '';
+      const shelf = parseFloat(String(shelfRaw).replace(',', '.'));
+      if (Number.isNaN(shelf)) return;
+
+      // Only apply to known ingredients
+      const ing = (appData.ingredients || []).find(i => String(i.id) === id);
+      if (!ing) return;
+
+      stockCountDraft[id] = shelf;
+    });
+
+    if (typeof renderStockCountTable === 'function') renderStockCountTable();
+    if (typeof showToast === 'function') showToast('Stock take sheet imported (draft counts loaded)', 'success');
+    return;
+  }
+
             try {
                 if(type === 'product') {
                     // Menu import: supports variant rows (Value 1/2/3). If any row for a Product ID/name has variants,

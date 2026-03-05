@@ -2559,6 +2559,8 @@ function openConfirmModal(msg, onConfirm) {
             backdrop.classList.remove('hidden'); backdrop.classList.add('flex');
             cont.innerHTML = `<div class="p-10 text-center uppercase font-black space-y-8"><div class="w-20 h-20 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner font-black"><i class="fa-solid fa-triangle-exclamation"></i></div><h3 class="text-xl font-black">Security confirmation</h3><p class="text-xs text-slate-400 font-bold uppercase">${msg}</p><div class="flex gap-4 font-black"><button onclick="closeModal()" class="flex-1 font-bold text-slate-400 py-4 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-2xl text-xs uppercase font-black font-black uppercase">Abort action</button><button id="modal-confirm-btn" class="flex-1 bg-red-600 text-white font-black py-4 rounded-2xl shadow-xl text-xs uppercase font-black uppercase">Execute wipe</button></div></div>`;
             document.getElementById('modal-confirm-btn').onclick = () => { onConfirm(); closeModal(); };
+}
+
         
 // --- Gentle confirm modal (used for imports) ---
 function openGentleConfirmModal(msg, onConfirm, confirmText = "Continue") {
@@ -2586,8 +2588,6 @@ function confirmImport(inputId, msg){
         const el = document.getElementById(inputId);
         if(el) el.click();
     }, "Select file");
-}
-
 }
 
         // --- MANUFACTURING ---

@@ -813,7 +813,7 @@
             </div>
         </header>
 
-        <div id="view-content" class="flex-1 overflow-y-auto p-6 lg:p-10 bg-[#f8fafc] dark:bg-[#0f172a]"
+        <div id="view-content" class="flex-1 overflow-y-auto p-3 md:p-6 lg:p-10 bg-[#f8fafc] dark:bg-[#0f172a]"
             onclick="if(window.innerWidth < 1024) toggleSidebar(false)">
 
             <!-- DASHBOARD -->
@@ -872,8 +872,8 @@
                         <option value="">All Categories</option>
                     </select>
                 </div>
-                <div class="card-white overflow-hidden shadow-sm">
-                    <table class="w-full text-left border-collapse" id="productsTable">
+                <div class="card-white overflow-x-auto shadow-sm">
+                    <table class="w-full text-left border-collapse" style="min-width: 540px;" id="productsTable">
                         <thead class="table-header-light font-black uppercase">
                             <tr>
                                 <th class="px-8 py-5">Product Name</th>
@@ -1047,8 +1047,8 @@
                         <option value="">All Sections</option>
                     </select>
                 </div>
-                <div class="card-white overflow-hidden shadow-sm">
-                    <table class="w-full text-left border-collapse" id="ingredientsTable">
+                <div class="card-white overflow-x-auto shadow-sm">
+                    <table class="w-full text-left border-collapse" style="min-width: 700px;" id="ingredientsTable">
                         <thead class="table-header-light font-black uppercase">
                             <tr>
                                 <th class="px-8 py-5 text-slate-500 font-black text-[10px]">Ingredient</th>
@@ -1411,9 +1411,9 @@
                     </select>
                 </div>
 
-                <div class="card-white overflow-hidden shadow-sm font-black uppercase font-black">
+                <div class="card-white overflow-x-auto shadow-sm font-black uppercase font-black">
                     <table class="w-full text-left border-collapse font-black uppercase font-black font-black uppercase"
-                        id="stockCountTable">
+                        style="min-width: 600px;" id="stockCountTable">
                         <thead
                             class="table-header-light font-black uppercase text-[10px] font-black uppercase font-black uppercase">
                             <tr>

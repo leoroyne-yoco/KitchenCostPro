@@ -620,6 +620,89 @@
         #view-grv .grv-commit-primary:hover {
             background: #1d4ed8;
         }
+
+        /* ===== MOBILE RESPONSIVE OVERRIDES ===== */
+        @media (max-width: 1023px) {
+
+            /* Main content fills full width when sidebar is hidden */
+            #main-content-area {
+                width: 100%;
+            }
+
+            /* Shorten the page title in the header on mobile */
+            #current-view-title {
+                font-size: 0.85rem;
+            }
+
+            /* Collapse the header stock value panel on mobile */
+            .head-stock-panel {
+                display: none !important;
+            }
+
+            /* Make tab views use less padding */
+            #view-content {
+                padding: 1rem !important;
+            }
+
+            /* Reduce card padding */
+            .card-white {
+                padding: 1rem !important;
+            }
+
+            /* Make tables horizontally scrollable */
+            .table-responsive-wrapper {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Make action button groups wrap on mobile */
+            .flex-nowrap-desktop {
+                flex-wrap: wrap;
+            }
+
+            /* Metric grids: force 2-col on mobile */
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            /* Stack header items vertically */
+            header .flex.items-center.gap-6 {
+                gap: 0.5rem !important;
+            }
+
+            /* Make modals full-screen on very small phones */
+            #modal-container {
+                border-radius: 0 !important;
+                height: 100dvh !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+
+            /* Make GRV form stack vertically */
+            .grv-grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Metric grids: single column on very small phones */
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Ensure buttons are touch-friendly */
+            button {
+                min-height: 2.5rem;
+            }
+
+            input,
+            select,
+            textarea {
+                font-size: 16px !important;
+                /* prevents iOS zoom on focus */
+            }
+        }
     </style>
 </head>
 
@@ -715,14 +798,18 @@
                     class="font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none">Dashboard
                 </h2>
             </div>
-            <div class="flex items-center gap-6 font-bold">
-                <div class="hidden md:block text-right leading-tight">
-                    <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Portfolio Valuation</p>
-                    <p id="head-stock-val" class="text-sm font-black text-blue-600 font-mono">R 0.00</p>
-                </div>
-                <div class="w-px h-8 bg-slate-200 dark:bg-slate-800"></div>
+            <div class="hidden md:block text-right leading-tight">
+                <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Portfolio Valuation</p>
+                <p id="head-stock-val" class="text-sm font-black text-blue-600 font-mono">R 0.00</p>
+            </div>
+            <div class="w-px h-8 bg-slate-200 dark:bg-slate-800"></div>
+            <div class="text-right leading-tight">
+                <p id="head-site-name"
+                    class="text-[10px] font-black text-slate-400 uppercase mb-1 truncate max-w-[150px]"></p>
+                <span id="head-date" class="text-[10px] font-black text-slate-400 uppercase mr-2 font-mono"></span>
                 <span id="head-time" class="text-sm font-black text-slate-700 dark:text-slate-300 font-mono">12:00
                     PM</span>
+            </div>
             </div>
         </header>
 
@@ -767,8 +854,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                     <h2 class="text-2xl font-black uppercase">Menu Catalogue</h2>
                     <div class="flex gap-2 items-center">
-                        <button onclick="exportProductsExcel()" class="btn-outline font-black text-[10px]">Export Data
-                            (Excel)</button>
+
                         <button
                             onclick="confirmImport('productImportInput', 'Importing a menu file will update your catalogue. Existing items may be overwritten. Continue?')"
                             class="btn-primary text-nowrap font-black uppercase">Import Menu</button>
@@ -780,9 +866,6 @@
                         <input id="productSearchInput" type="text" placeholder="Search menu catalogue..."
                             class="w-full pl-12 pr-12 input-light shadow-sm font-bold text-slate-900 dark:text-white uppercase"
                             onfocus="renderProductsTable()" oninput="renderProductsTable()">
-                        <button onclick="openCameraScanner('productSearchInput')"
-                            class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors"
-                            title="Scan Barcode"><i class="fa-solid fa-camera text-lg"></i></button>
                     </div>
                     <select id="productCategoryFilter" class="w-full md:w-64 input-light font-black uppercase text-xs"
                         onchange="renderProductsTable()">
@@ -843,9 +926,6 @@
                                 <input id="recipeSearch" type="text" placeholder="Find Menu Item..."
                                     class="w-full px-4 pr-12 py-5 rounded-2xl border-none shadow-inner outline-none text-sm font-bold uppercase bg-white dark:bg-slate-800 placeholder:text-slate-400 dark:placeholder:text-slate-400"
                                     oninput="renderProductList()">
-                                <button onclick="openCameraScanner('recipeSearch')"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors"
-                                    title="Scan Barcode"><i class="fa-solid fa-camera text-lg"></i></button>
                             </div>
                             <select id="recipeCategoryFilter"
                                 class="w-full px-4 py-3 border rounded-2xl text-[10px] font-black uppercase dark:bg-slate-800 shadow-sm"
@@ -1623,7 +1703,13 @@
                                 <label
                                     class="block mb-3 text-slate-400 leading-none font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase">Vat
                                     Rate %</label><input type="number" id="settingVatRate" onchange="saveSettings()"
-                                    class="w-full input-light text-3xl text-slate-900 dark:text-white font-black shadow-inner font-mono font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
+                                    class="w-full input-light text-3xl text-slate-900 dark:text-white font-black shadow-inner font-mono font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase mb-6">
+
+                                <label
+                                    class="block mb-3 text-slate-400 leading-none font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase">Site
+                                    Name</label><input type="text" id="settingSiteName" onchange="saveSettings()"
+                                    placeholder="e.g. Main Kitchen"
+                                    class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
                             </div>
                         </div>
                         <div
@@ -1662,18 +1748,17 @@
 
     <!-- Camera Scanner Backdrop -->
     <div id="scanner-backdrop"
-        class="fixed inset-0 bg-slate-900/60 backdrop-blur-xl hidden items-center justify-center p-6 uppercase font-black z-[1050]">
+        class="fixed inset-0 bg-slate-900/80 backdrop-blur-xl hidden items-center justify-center p-0 sm:p-6 uppercase font-black z-[1050]">
         <div
-            class="bg-white dark:bg-slate-800 rounded-[3rem] shadow-2xl w-full max-w-xl overflow-hidden border border-white/20 dark:border-slate-700 animate-fade-in p-10 flex flex-col items-center">
-            <div class="w-full flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-black text-slate-900 dark:text-white">Scan Barcode</h3>
+            class="bg-white dark:bg-slate-800 rounded-none sm:rounded-[3rem] shadow-2xl w-full h-full sm:h-auto sm:max-w-lg overflow-hidden border-0 sm:border border-white/20 dark:border-slate-700 animate-fade-in flex flex-col">
+            <div class="flex justify-between items-center px-6 pt-6 pb-3">
+                <h3 class="text-xl font-black text-slate-900 dark:text-white">Scan Barcode</h3>
                 <button onclick="closeCameraScanner()"
                     class="text-slate-400 hover:text-red-400 transition text-3xl font-black leading-none">&times;</button>
             </div>
-            <div id="qr-reader" style="width: 100%; max-width: 500px; border-radius: 1rem; overflow: hidden;"
-                class="shadow-inner border dark:border-slate-700 bg-black"></div>
-            <div class="text-[10px] opacity-60 tracking-widest font-black mt-6 text-center text-slate-500">Point your
-                camera at a barcode to scan.</div>
+            <div id="qr-reader" class="flex-1 sm:flex-none w-full" style="min-height: 280px; background: #000;"></div>
+            <div class="text-[10px] opacity-60 tracking-widest font-black py-4 text-center text-slate-500">Point your
+                rear camera at a barcode to scan.</div>
         </div>
     </div>
 
@@ -1837,8 +1922,8 @@
         function closeModal() { const mb = document.getElementById('modal-backdrop'); const mc = document.getElementById('modal-container'); if (mc) mc.classList.remove('modal-wide'); if (mb) { mb.classList.add('hidden'); mb.classList.remove('flex'); } }
         function toggleSidebar(force) { const sb = document.getElementById('sidebar'); if (!sb) return; if (force === true) sb.classList.remove('-translate-x-full'); else sb.classList.add('-translate-x-full'); }
 
-        let html5QrcodeScanner = null;
         let currentScannerInputId = null;
+        let html5QrcodeInstance = null;
 
         function openCameraScanner(inputId) {
             currentScannerInputId = inputId;
@@ -1850,9 +1935,10 @@
 
             setTimeout(() => {
                 try {
-                    if (!html5QrcodeScanner) {
-                        html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
-                        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+                    if (html5QrcodeInstance) {
+                        html5QrcodeInstance.stop().catch(() => { }).finally(() => startQrCamera());
+                    } else {
+                        startQrCamera();
                     }
                 } catch (e) {
                     console.error("Scanner init error:", e);
@@ -1861,15 +1947,42 @@
             }, 100);
         }
 
+        function startQrCamera() {
+            html5QrcodeInstance = new Html5Qrcode('qr-reader');
+            const readerEl = document.getElementById('qr-reader');
+            const w = readerEl ? (readerEl.offsetWidth || 300) : 300;
+            const qrbox = Math.min(Math.round(w * 0.7), 280);
+
+            html5QrcodeInstance.start(
+                { facingMode: { exact: 'environment' } },
+                { fps: 10, qrbox: { width: qrbox, height: qrbox } },
+                onScanSuccess,
+                onScanFailure
+            ).catch(() => {
+                // Fallback to any camera if rear camera not available
+                html5QrcodeInstance.start(
+                    { facingMode: 'user' },
+                    { fps: 10, qrbox: { width: qrbox, height: qrbox } },
+                    onScanSuccess,
+                    onScanFailure
+                ).catch(e => {
+                    console.error('Camera error:', e);
+                    document.getElementById('qr-reader').innerHTML = '<div class="p-10 text-center text-red-500 text-xs font-black uppercase tracking-widest">Camera permission denied or not supported.</div>';
+                });
+            });
+        }
+
         function closeCameraScanner() {
             const bd = document.getElementById('scanner-backdrop');
             if (bd) {
                 bd.classList.add('hidden');
                 bd.classList.remove('flex');
             }
-            if (html5QrcodeScanner) {
-                html5QrcodeScanner.clear().catch(e => console.error(e));
-                html5QrcodeScanner = null;
+            if (html5QrcodeInstance) {
+                html5QrcodeInstance.stop().catch(e => console.error(e)).finally(() => {
+                    html5QrcodeInstance.clear();
+                    html5QrcodeInstance = null;
+                });
             }
         }
 
@@ -1955,7 +2068,15 @@
             updateFilterDropdowns();
             updateFilterDropdowns();
         }
-        function saveSettings() { const r = parseFloat(document.getElementById('settingVatRate').value); appData.settings.vatRate = isNaN(r) ? 15 : r; saveData(); showToast("Logic system configured", "success"); }
+        function saveSettings() {
+            const r = parseFloat(document.getElementById('settingVatRate').value);
+            appData.settings.vatRate = isNaN(r) ? 15 : r;
+            const sn = document.getElementById('settingSiteName').value.trim();
+            appData.settings.siteName = sn;
+            document.getElementById('head-site-name').textContent = sn;
+            saveData();
+            showToast("Logic system configured", "success");
+        }
 
         function updateDashboard() {
             const stockValue = (appData.ingredients || []).reduce((acc, i) => acc + ((i.cost || 0) * (i.stock || 0)), 0);
@@ -2765,11 +2886,14 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                         <div class="md:col-span-2 space-y-2">
                             <label class="text-[10px] text-slate-400 uppercase font-black">Search</label>
-                            <input id="pickerSearch" type="text" value="${escapeHtml(_pickerSearch)}" placeholder="Type name..." class="w-full input-light shadow-inner"
-                                onfocus="_pickerLastFocus='search'"
-                                onkeyup="_pickerLastCaret=this.selectionStart"
-                                onclick="_pickerLastCaret=this.selectionStart"
-                                oninput="_pickerLastFocus='search'; _pickerSearch=this.value; _pickerLastCaret=this.selectionStart; pickerApplyFilters();">
+                            <div class="relative">
+                                <input id="pickerSearch" type="text" value="${escapeHtml(_pickerSearch)}" placeholder="Type name..." class="w-full pr-12 input-light shadow-inner"
+                                    onfocus="_pickerLastFocus='search'"
+                                    onkeyup="_pickerLastCaret=this.selectionStart"
+                                    onclick="_pickerLastCaret=this.selectionStart"
+                                    oninput="_pickerLastFocus='search'; _pickerSearch=this.value; _pickerLastCaret=this.selectionStart; pickerApplyFilters();">
+                                <button onclick="openCameraScanner('pickerSearch')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors" title="Scan Barcode"><i class="fa-solid fa-camera text-lg"></i></button>
+                            </div>
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] text-slate-400 uppercase font-black">Category</label>
@@ -3235,6 +3359,10 @@
 
             // Cost is optional for manufactured items (computed from blueprint + batch yield)
             if (!n || (!isMfg && isNaN(c))) return showToast("Validation Incomplete", "error");
+
+            // Prevent duplicate names
+            const exists = (appData.ingredients || []).find(i => String(i.name).toLowerCase().trim() === String(n).toLowerCase().trim() && String(i.id) !== String(id));
+            if (exists) return showToast("An item with this name already exists.", "error");
             if (isMfg) {
                 if (cat && !cat.toLowerCase().includes('manufactured')) cat += ' - Manufactured';
             } else {
@@ -3723,6 +3851,8 @@
                 (appData.ingredients || []).forEach(i => byName.set(norm(i.name).toLowerCase(), i));
 
                 const groups = new Map();
+                let missingIngredients = 0;
+
                 (data || []).forEach(row => {
                     const pname = norm(row.Product_Name ?? row['Product Name'] ?? row.Product ?? row.Name);
                     if (!pname) return;
@@ -3737,7 +3867,11 @@
 
                     if (!ingName) return; // allow "blank" recipe rows to mean empty recipe
                     const ing = byName.get(ingName.toLowerCase());
-                    if (!ing) return;
+                    if (!ing) {
+                        missingIngredients++;
+                        console.warn(`Recipe import: missing ingredient "${ingName}" for product "${pname}"`);
+                        return;
+                    }
 
                     const qty = parseFloat(String(qtyRaw ?? '').replace(',', '.'));
                     if (Number.isNaN(qty)) return;
@@ -3768,7 +3902,11 @@
                     }
                 } catch (e) { }
 
-                if (typeof showToast === 'function') showToast("Recipes imported successfully", "success");
+                if (missingIngredients > 0) {
+                    showToast(`Success with ${missingIngredients} unmatched items, check Stock Master`, "warning");
+                } else {
+                    showToast("Recipes imported successfully", "success");
+                }
                 return;
             }
 
@@ -3780,6 +3918,8 @@
                 (appData.ingredients || []).forEach(i => ingredientByName.set(norm(i.name).toLowerCase(), i));
 
                 const groups = new Map();
+                let missingIngredients = 0;
+
                 (data || []).forEach(row => {
                     const mname = norm(row.Prep_Item_Name ?? row['Prep Item Name'] ?? row.Prep_Item ?? row.Name);
                     if (!mname) return;
@@ -3794,7 +3934,11 @@
 
                     if (!compName) return;
                     const comp = ingredientByName.get(compName.toLowerCase());
-                    if (!comp) return;
+                    if (!comp) {
+                        missingIngredients++;
+                        console.warn(`MFG import: missing ingredient "${compName}" for manufactured item "${mname}"`);
+                        return;
+                    }
 
                     const qty = parseFloat(String(qtyRaw ?? '').replace(',', '.'));
                     if (Number.isNaN(qty)) return;
@@ -3837,7 +3981,11 @@
                     }
                 } catch (e) { }
 
-                if (typeof showToast === 'function') showToast("Manufacturing recipes imported successfully", "success");
+                if (missingIngredients > 0) {
+                    showToast(`Success with ${missingIngredients} unmatched items, check Stock Master`, "warning");
+                } else {
+                    showToast("Manufacturing imported successfully", "success");
+                }
                 return;
             }
 
@@ -3900,7 +4048,42 @@
                             } else {
                                 if (!cat.toLowerCase().includes('raw materials')) cat += ' - Raw Materials';
                             }
-                            appData.ingredients.push({ id: Date.now() + Math.random(), name: row.Name, cost: parseFloat(row.Ex_VAT_Cost || row.Cost || 0), category: cat, unit: row.Unit || 'ea', isManufactured: isMfg, vatEnabled: !(['0', 'n', 'no', 'false', 'f', 'off'].includes(((row['VAT Enabled'] ?? row.VAT_Enabled ?? row.VATEnabled ?? row.VatEnabled ?? row.Taxable ?? '') + '').toString().trim().toLowerCase())), stock: 0, lowStockThreshold: parseFloat(row.Low_Stock_Threshold || 5) });
+                            const barcode = row.Barcode?.toString().trim() || "";
+
+                            // Find existing by ID, Barcode, or Name
+                            let existing = appData.ingredients.find(i =>
+                                (row.ID && i.id == row.ID) ||
+                                (barcode && (i.barcode === barcode || (Array.isArray(i.barcodes) && i.barcodes.includes(barcode)))) ||
+                                (String(i.name).toLowerCase().trim() === String(row.Name).toLowerCase().trim())
+                            );
+
+                            const vatEnabled = !(['0', 'n', 'no', 'false', 'f', 'off'].includes(((row['VAT Enabled'] ?? row.VAT_Enabled ?? row.VATEnabled ?? row.VatEnabled ?? row.Taxable ?? '') + '').toString().trim().toLowerCase()));
+
+                            if (existing) {
+                                existing.cost = parseFloat(row.Ex_VAT_Cost || row.Cost || existing.cost || 0);
+                                existing.category = cat;
+                                existing.unit = row.Unit || existing.unit || 'ea';
+                                existing.isManufactured = isMfg;
+                                existing.vatEnabled = vatEnabled;
+                                existing.lowStockThreshold = parseFloat(row.Low_Stock_Threshold || existing.lowStockThreshold || 5);
+                                if (barcode) {
+                                    if (!Array.isArray(existing.barcodes)) existing.barcodes = existing.barcode ? [existing.barcode] : [];
+                                    if (!existing.barcodes.includes(barcode)) existing.barcodes.push(barcode);
+                                }
+                            } else {
+                                appData.ingredients.push({
+                                    id: Date.now() + Math.random() + "",
+                                    name: row.Name,
+                                    cost: parseFloat(row.Ex_VAT_Cost || row.Cost || 0),
+                                    category: cat,
+                                    unit: row.Unit || 'ea',
+                                    isManufactured: isMfg,
+                                    vatEnabled: vatEnabled,
+                                    stock: 0,
+                                    lowStockThreshold: parseFloat(row.Low_Stock_Threshold || 5),
+                                    barcodes: barcode ? [barcode] : []
+                                });
+                            }
                         }
                     });
                 } else if (type === 'stocktake') {
@@ -4359,12 +4542,33 @@
         // --- Hub BOOTSTRAP Hub ---
         window.onload = function () {
             loadData();
+            document.getElementById('settingVatRate').value = appData.settings?.vatRate ?? 15;
+            const sn = appData.settings?.siteName || '';
+            document.getElementById('settingSiteName').value = sn;
+            document.getElementById('head-site-name').textContent = sn;
+
             ensureHeaderDefaults();
+            initSearchableDropdown('grv', null);
+            initSearchableDropdown('cn', null);
+            initSearchableDropdown('adj', null);
             updateDashboard();
             updateFilterDropdowns();
+            renderProductsTable();
+            renderIngredientsTable();
             const ctx = document.getElementById('mainDashboardChart')?.getContext('2d');
             if (ctx) { window.mainDashboardChart = new Chart(ctx, { type: 'line', data: { labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'], datasets: [{ data: [65, 59, 80, 81, 56, 85, 95], borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.05)', fill: true, tension: 0.4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false }, ticks: { font: { weight: 'bold' } } } } } }); applyChartTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light'); }
-            setInterval(() => { const el = document.getElementById('head-time'); if (el) el.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }, 1000);
+            setInterval(() => {
+                const now = new Date();
+                const timeEl = document.getElementById('head-time');
+                if (timeEl) timeEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const dateEl = document.getElementById('head-date');
+                if (dateEl) {
+                    const d = String(now.getDate()).padStart(2, '0');
+                    const m = String(now.getMonth() + 1).padStart(2, '0');
+                    const y = now.getFullYear();
+                    dateEl.textContent = `${d}/${m}/${y}`;
+                }
+            }, 1000);
 
             const bind = (id, ev, fn) => { const el = document.getElementById(id); if (el) el.addEventListener(ev, fn); };
             bind('productSearchInput', 'input', renderProductsTable);
@@ -4422,11 +4626,12 @@
         }
 
         function exportIngredientsExcel() {
-            const rows = [["Name", "Category", "Unit", "Manufactured", "VAT Enabled", "Ex_VAT_Cost", "Low_Stock_Threshold"]];
+            const rows = [["Name", "Category", "Unit", "Manufactured", "VAT Enabled", "Ex_VAT_Cost", "Low_Stock_Threshold", "Barcode"]];
             (appData.ingredients || [])
                 .slice()
                 .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
                 .forEach(i => {
+                    const barcode = i.barcode || (Array.isArray(i.barcodes) ? i.barcodes.join(",") : "");
                     rows.push([
                         i.name || "",
                         i.category || "",
@@ -4434,7 +4639,8 @@
                         (i.isManufactured === true) ? "YES" : "NO",
                         (i.vatEnabled === false) ? "NO" : "YES",
                         (i.costEx ?? i.cost ?? 0),
-                        (i.lowStockThreshold ?? i.lowStock ?? "")
+                        (i.lowStockThreshold ?? i.lowStock ?? ""),
+                        barcode
                     ]);
                 });
             const wb = XLSX.utils.book_new();
@@ -4490,7 +4696,7 @@
 
 
 
-        function exportIngredientsTemplateExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([["Name", "Category", "Unit", "Manufactured", "VAT Enabled", "Ex_VAT_Cost", "Low_Stock_Threshold"]]), "Template"); XLSX.writeFile(wb, "KCP_Stock_Template.xlsx"); }
+        function exportIngredientsTemplateExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([["Name", "Category", "Unit", "Manufactured", "VAT Enabled", "Ex_VAT_Cost", "Low_Stock_Threshold", "Barcode"]]), "Template"); XLSX.writeFile(wb, "KCP_Stock_Template.xlsx"); }
         function exportStockTakeTemplateExcel() { const wb = XLSX.utils.book_new(); let d = [["ID", "Name", "Category", "System_Stock", "Shelf_Count"]]; appData.ingredients.forEach(i => d.push([i.id, i.name, i.category, i.stock, ""])); XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(d), "Audit"); XLSX.writeFile(wb, "KCP_StockTake_Template.xlsx"); }
         // Export the current stock take (includes Shelf_Count draft values where provided)
         function exportStockTakeDataExcel() {
@@ -4528,10 +4734,20 @@
 
                 // Header fields
                 const dtVal = document.getElementById('stockCountDate')?.value || "";
-                const nowStr = new Date().toLocaleString();
-                const storeName = (appData.settings && (appData.settings.storeName || appData.settings.store || appData.settings.businessName)) || "KCP";
+                let displayDate = "";
+                if (dtVal) {
+                    const p = dtVal.split('-');
+                    displayDate = (p.length === 3) ? `${p[2]}/${p[1]}/${p[0]}` : dtVal;
+                } else {
+                    const n = new Date();
+                    const d = String(n.getDate()).padStart(2, '0');
+                    const m = String(n.getMonth() + 1).padStart(2, '0');
+                    const y = n.getFullYear();
+                    displayDate = `${d}/${m}/${y} ${n.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                }
+                const siteName = appData.settings?.siteName || "KCP";
                 const stockLocation = (appData.settings && (appData.settings.stockLocation || appData.settings.defaultStockLocation)) || "Default Stock Location";
-                const headerLine2 = `Bar Count Per Inventory   |   ${storeName}   |   [${stockLocation}]   |   ${dtVal || nowStr}`;
+                const headerLine2 = `Stock count | ${siteName} | [${stockLocation}] | ${displayDate}`;
 
                 // Title
                 doc.setFont("helvetica", "bold");
@@ -4580,6 +4796,7 @@
                 // Columns (no system stock, no custom UOM columns)
                 const head = [[
                     "Product Name",
+                    "Category",
                     "Stock Location",
                     "Qty",
                     "Base Uom"
@@ -4589,9 +4806,11 @@
 
                 list.forEach(it => {
                     const uom = it.unit || it.uom || "ea";
+                    const cat = it.category || "";
 
                     body.push([
                         it.name || "",
+                        cat,
                         stockLocation,
                         "",
                         uom
@@ -4618,10 +4837,11 @@
                         },
                         alternateRowStyles: { fillColor: [245, 245, 245] },
                         columnStyles: {
-                            0: { cellWidth: 250 },
-                            1: { cellWidth: 145 },
-                            2: { cellWidth: 60 },
-                            3: { cellWidth: 80 }
+                            0: { cellWidth: 160 }, // Product Name
+                            1: { cellWidth: 130 }, // Category
+                            2: { cellWidth: 100 }, // Stock Location
+                            3: { cellWidth: 50 },  // Qty
+                            4: { cellWidth: 60 }   // Base Uom
                         },
                         margin: { left: 30, right: 30 }
                     });

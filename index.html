@@ -676,86 +676,147 @@
         }
 
         /* ===== MOBILE RESPONSIVE OVERRIDES ===== */
+
+        /* ---- Tablet & below (< 1024px) ---- */
         @media (max-width: 1023px) {
+            #main-content-area { width: 100%; }
+            #current-view-title { font-size: 0.85rem; }
+            .head-stock-panel { display: none !important; }
+            #view-content { padding: 0.75rem !important; }
+            .card-white { padding: 1rem !important; border-radius: 1rem; }
+            .table-responsive-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .flex-nowrap-desktop { flex-wrap: wrap; }
 
-            /* Main content fills full width when sidebar is hidden */
-            #main-content-area {
-                width: 100%;
+            /* Recipe & MFG: remove fixed height so panels stack naturally */
+            #view-recipes .grid, #view-mfg-products .grid,
+            #view-transfers .grid {
+                height: auto !important;
             }
 
-            /* Shorten the page title in the header on mobile */
-            #current-view-title {
-                font-size: 0.85rem;
+            /* Report content: reduce border radius on smaller screens */
+            #report-content { border-radius: 1.5rem; }
+
+            /* Sales Sync: shrink the drop zone */
+            #dropZoneSales { padding: 3rem 1.5rem !important; }
+            #view-upload { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            #view-upload .card-white { padding: 1.5rem !important; }
+
+            /* GRV bottom bar */
+            #view-grv .grv-bottombar { padding: 1rem 1.25rem; }
+            #view-grv .grv-topbar { padding: 1rem 1.25rem; }
+            #view-grv .grv-metric-value { font-size: min(20px, 5vw); }
+
+            /* Credit Note summary footer */
+            #view-credit-note .p-10 { padding: 1.25rem !important; }
+            #cnTotalValue { font-size: 1.75rem !important; }
+        }
+
+        /* ---- Mobile-specific (< 768px) ---- */
+        @media (max-width: 767px) {
+            /* Dashboard metric cards */
+            #view-dashboard h3.text-3xl { font-size: 1.5rem; }
+            #view-dashboard h3.text-2xl { font-size: 1.25rem; }
+
+            /* Report tools header: stack vertically */
+            #report-detail-wrapper > .flex.flex-col.xl\\:flex-row {
+                flex-direction: column !important;
+                gap: 0.75rem;
+            }
+            /* Shrink report toolbar padding */
+            #report-detail-wrapper .p-2 { padding: 0.5rem !important; }
+            #report-detail-wrapper .flex.flex-wrap { flex-wrap: wrap; gap: 0.5rem; }
+
+            /* Adjustments section */
+            #view-adjustments { padding: 1rem 0 !important; }
+            #view-adjustments .card-white { padding: 1.5rem !important; }
+            #view-adjustments button.px-24 { padding-left: 2rem !important; padding-right: 2rem !important; }
+
+            /* Locations */
+            #view-locations .card-white { padding: 1.5rem !important; }
+            #view-locations .text-3xl { font-size: 1.5rem; }
+
+            /* Settings */
+            #view-settings .card-white { padding: 1.25rem !important; }
+
+            /* Recipe & MFG detail headers */
+            #recipeActiveState .p-10,
+            #mfgActiveState .p-10 {
+                padding: 1.25rem !important;
+            }
+            #currentRecipeTitle, #currentMfgTitle { font-size: 1.25rem !important; }
+            #currentRecipeCost, #currentMfgCost { font-size: 1.5rem !important; }
+
+            /* Picker rows */
+            .picker-row {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+            .picker-row.has-price {
+                grid-template-columns: 1fr !important;
+            }
+            #modal-container.modal-wide .picker-row.has-price {
+                grid-template-columns: 1fr !important;
             }
 
-            /* Collapse the header stock value panel on mobile */
-            .head-stock-panel {
-                display: none !important;
+            /* Bulk bars */
+            #grvBulkBar, #cnBulkBar, #recipeBulkBar, #mfgBulkBar {
+                flex-direction: column !important;
+                gap: 0.75rem;
+                padding: 0.75rem !important;
+                margin: 0.5rem !important;
             }
 
-            /* Make tab views use less padding */
-            #view-content {
-                padding: 1rem !important;
-            }
+            /* GRV side cards padding */
+            #view-grv .grv-card.grv-sidecard { padding: 1.25rem !important; }
+            #view-grv .grv-draft-panel { min-height: 350px; height: auto; }
 
-            /* Reduce card padding */
-            .card-white {
-                padding: 1rem !important;
-            }
+            /* Transfer view */
+            #view-transfers { padding: 1rem 0 !important; }
 
-            /* Make tables horizontally scrollable */
-            .table-responsive-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            /* Make action button groups wrap on mobile */
-            .flex-nowrap-desktop {
-                flex-wrap: wrap;
-            }
-
-            /* Metric grids: force 2-col on mobile */
-            .grid-cols-4 {
+            /* Report hub cards: 2 columns on mobile */
+            #report-hub .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4 {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
         }
 
+        /* ---- Small phones (< 480px) ---- */
+        @media (max-width: 479px) {
+            /* Dashboard: single column metric cards */
+            #view-dashboard .grid { grid-template-columns: 1fr !important; }
+
+            /* Report hub: single column for very small screens */
+            #report-hub .grid { grid-template-columns: 1fr !important; }
+
+            /* Operational dashboard label */
+            #view-dashboard .flex.items-center.gap-3 span.italic { display: none; }
+        }
+
+        /* ---- All mobile (< 640px — touch targets, iOS zoom prevention, modals) ---- */
         @media (max-width: 640px) {
+            header .flex.items-center.gap-6 { gap: 0.5rem !important; }
 
-            /* Stack header items vertically */
-            header .flex.items-center.gap-6 {
-                gap: 0.5rem !important;
-            }
-
-            /* Make modals full-screen on very small phones */
+            /* Modals full-screen */
             #modal-container {
-                border-radius: 0 !important;
-                height: 100dvh !important;
-                max-width: 100% !important;
-                margin: 0 !important;
+                border-radius: 1rem !important;
+                max-height: 95dvh !important;
+                max-width: 96vw !important;
+                margin: 0 auto !important;
             }
 
-            /* Make GRV form stack vertically */
-            .grv-grid-cols-2 {
-                grid-template-columns: 1fr !important;
-            }
+            /* Touch-friendly buttons */
+            button { min-height: 2.5rem; }
 
-            /* Metric grids: single column on very small phones */
-            .grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+            /* Prevent iOS zoom on focus */
+            input, select, textarea { font-size: 16px !important; }
 
-            /* Ensure buttons are touch-friendly */
-            button {
-                min-height: 2.5rem;
-            }
+            /* GRV commit button */
+            #view-grv .grv-commit-primary { min-width: auto; padding: 1rem; }
 
-            input,
-            select,
-            textarea {
-                font-size: 16px !important;
-                /* prevents iOS zoom on focus */
-            }
+            /* Report content rounded corners */
+            #report-content { border-radius: 1rem; }
+
+            /* CN commit button */
+            #view-credit-note button.px-12 { padding-left: 2rem !important; padding-right: 2rem !important; }
         }
     </style>
 </head>
@@ -1902,16 +1963,16 @@
                 <div id="report-detail-wrapper" class="hidden flex flex-col space-y-8 animate-fade-in w-full max-w-7xl mx-auto px-4">
                     
                     <!-- Report Tools Header -->
-                    <div class="flex flex-col xl:flex-row items-center gap-6 p-2 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border dark:border-slate-700 w-full overflow-hidden shrink-0">
-                        <div class="flex items-center gap-4 px-4 w-full xl:w-auto shrink-0 border-r border-slate-100 dark:border-slate-700/50">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4 p-2 bg-white dark:bg-slate-800 rounded-2xl md:rounded-3xl shadow-sm border dark:border-slate-700 w-full overflow-hidden shrink-0">
+                        <div class="flex items-center gap-4 px-4 w-full md:w-auto shrink-0 md:border-r border-slate-100 dark:border-slate-700/50">
                             <button onclick="showReportHub()" class="p-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl text-slate-400 hover:text-blue-600 transition-colors">
                                 <i class="fa-solid fa-arrow-left"></i>
                             </button>
                             <h2 id="report-detail-title" class="text-sm font-black text-slate-800 dark:text-slate-100 tracking-tight">REPORT</h2>
                         </div>
 
-                        <div class="flex flex-wrap items-center gap-3 p-2 w-full xl:flex-1">
-                            <div class="relative flex-1 min-w-[200px]">
+                        <div class="flex flex-wrap items-center gap-3 p-2 w-full md:flex-1">
+                            <div class="relative flex-1 min-w-[160px] sm:min-w-[200px]">
                                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
                                 <input id="reportSearchInput" type="text" placeholder="Search records..."
                                     class="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border-0 rounded-xl text-xs font-bold focus:ring-2 ring-blue-500/20 transition-all shadow-inner"
@@ -2125,7 +2186,8 @@
 
                     <!-- VIEW: ACTIVITY LOG -->
                     <div id="report-view-activity_log" class="report-sub-view hidden flex flex-col">
-                        <div class="overflow-x-auto">
+                        <!-- Desktop table (hidden on mobile) -->
+                        <div class="overflow-x-auto hidden md:block">
                             <table class="w-full text-left uppercase font-black" id="reportActivityLogTable">
                                 <thead class="table-header-light text-[10px]">
                                     <tr>
@@ -2139,6 +2201,8 @@
                                 <tbody id="reportActivityLogBody"></tbody>
                             </table>
                         </div>
+                        <!-- Mobile cards (hidden on desktop) -->
+                        <div id="reportActivityLogCards" class="md:hidden space-y-3 p-4"></div>
                     </div>
 
                     <div id="report-view-low_stock" class="report-sub-view hidden flex flex-col">
@@ -5516,44 +5580,41 @@
         }
 
         function renderActivityLogReport() {
-            const tbody = document.getElementById('reportActivityLogBody'); if (!tbody) return; tbody.innerHTML = '';
+            const tbody = document.getElementById('reportActivityLogBody');
+            const cards = document.getElementById('reportActivityLogCards');
+            if (!tbody && !cards) return;
+            if (tbody) tbody.innerHTML = '';
+            if (cards) cards.innerHTML = '';
             const start = document.getElementById('reportStartDate')?.value || '';
             const end = document.getElementById('reportEndDate')?.value || '';
             const search = (document.getElementById('reportSearchInput')?.value || '').toLowerCase();
 
             let allLogs = [];
 
-            // 1. GRV
             (appData.logs_grv || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PURCHASE (GRV)', action: l.supplier, summary: `INV: ${l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'grv' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PURCHASE (GRV)', action: l.supplier, summary: `INV: ${l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'grv', color: 'blue' });
             });
-            // 2. CN
             (appData.logs_cn || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'CREDIT NOTE', action: l.supplier, summary: `CN: ${l.number || l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'cn' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'CREDIT NOTE', action: l.supplier, summary: `CN: ${l.number || l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'cn', color: 'amber' });
             });
-            // 3. Adjustments
             (appData.logs_adj || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'ADJUSTMENT', action: l.itemName, summary: `${l.mode}: ${l.qty} ${l.unit} (${formatCurrency(l.impactEx || 0)})`, id: l.id, ltype: 'adj' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'ADJUSTMENT', action: l.itemName, summary: `${l.mode}: ${l.qty} ${l.unit} (${formatCurrency(l.impactEx || 0)})`, id: l.id, ltype: 'adj', color: 'purple' });
             });
-            // 4. Stock Takes
             (appData.logs_stocktakes || []).forEach(l => {
                 const totalVarValue = (l.items || []).reduce((acc, i) => {
                     const ing = appData.ingredients.find(ing => ing.id == i.id);
                     return acc + (i.variance * (ing?.cost || 0));
                 }, 0);
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'STOCK TAKE', action: 'FULL COUNT', summary: `VARIANCE: ${formatCurrency(totalVarValue)}`, id: l.id, ltype: 'stocktake' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'STOCK TAKE', action: 'FULL COUNT', summary: `VARIANCE: ${formatCurrency(totalVarValue)}`, id: l.id, ltype: 'stocktake', color: 'orange' });
             });
-            // 5. Manufacturing
             (appData.logs_mfg || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PRODUCTION', action: l.itemName, summary: `PRODUCED: ${l.producedQty} ${l.unit}`, id: l.id, ltype: 'mfg' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PRODUCTION', action: l.itemName, summary: `PRODUCED: ${l.producedQty} ${l.unit}`, id: l.id, ltype: 'mfg', color: 'emerald' });
             });
-            // 6. Transfers
             (appData.logs_transfers || []).forEach((l, idx) => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'TRANSFER', action: `${l.fromName} → ${l.toName}`, summary: `${(l.items || []).length} ITEMS MOVED`, id: l.id || idx, ltype: 'transfer' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'TRANSFER', action: `${l.fromName} → ${l.toName}`, summary: `${(l.items || []).length} ITEMS MOVED`, id: l.id || idx, ltype: 'transfer', color: 'cyan' });
             });
-            // 7. Sales Sync
             (appData.logs_sales || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'SALES SYNC', action: 'DEPLETION', summary: `${l.itemsProcessed} PRODUCTS SYNCED`, id: l.timestamp, ltype: 'sales_details' });
+                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'SALES SYNC', action: 'DEPLETION', summary: `${l.itemsProcessed} PRODUCTS SYNCED`, id: l.timestamp, ltype: 'sales_details', color: 'rose' });
             });
 
             const filtered = allLogs.filter(l => {
@@ -5563,20 +5624,43 @@
                 return true;
             }).sort((a,b) => b.ts.localeCompare(a.ts));
 
+            const colorMap = { blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300', amber: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300', purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300', orange: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300', emerald: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300', cyan: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300', rose: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300' };
+
             filtered.forEach(l => {
                 const viewBtn = l.ltype === 'sales_details' 
                     ? `<button onclick="switchReportTab('sync_log')" class="p-2 text-blue-500 hover:text-blue-700"><i class="fa-solid fa-eye"></i></button>`
                     : `<button onclick="viewLogDetails('${l.ltype}', '${l.id}')" class="p-2 text-blue-500 hover:text-blue-700"><i class="fa-solid fa-eye"></i></button>`;
 
-                tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700/50 transition-colors uppercase text-[11px] font-black">
-                        <td class="px-10 py-6 text-slate-400 whitespace-nowrap">${l.ts.replace('T', ' ').split('.')[0].replace(/-/g, '/')}</td>
-                        <td class="px-6 py-6 text-blue-600">${l.type}</td>
-                        <td class="px-6 py-6 text-slate-700 dark:text-slate-200">${l.action}</td>
-                        <td class="px-6 py-6 text-slate-500 font-mono text-[10px]">${l.summary}</td>
-                        <td class="px-10 py-6 text-right">${viewBtn}</td>
-                    </tr>
-                `;
+                const displayTs = l.ts.replace('T', ' ').split('.')[0].replace(/-/g, '/');
+                const badge = colorMap[l.color] || colorMap.blue;
+
+                // Desktop table row
+                if (tbody) {
+                    tbody.innerHTML += `
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700/50 transition-colors uppercase text-[11px] font-black">
+                            <td class="px-10 py-6 text-slate-400 whitespace-nowrap">${displayTs}</td>
+                            <td class="px-6 py-6 text-blue-600">${l.type}</td>
+                            <td class="px-6 py-6 text-slate-700 dark:text-slate-200">${l.action}</td>
+                            <td class="px-6 py-6 text-slate-500 font-mono text-[10px]">${l.summary}</td>
+                            <td class="px-10 py-6 text-right">${viewBtn}</td>
+                        </tr>
+                    `;
+                }
+
+                // Mobile card
+                if (cards) {
+                    cards.innerHTML += `
+                        <div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 p-4 shadow-sm">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[9px] uppercase font-black px-2 py-1 rounded-full ${badge}">${l.type}</span>
+                                ${viewBtn}
+                            </div>
+                            <div class="text-[12px] font-black text-slate-800 dark:text-slate-100 uppercase mb-1">${l.action}</div>
+                            <div class="text-[10px] font-mono text-slate-500 dark:text-slate-400 mb-2">${l.summary}</div>
+                            <div class="text-[9px] text-slate-400 uppercase tracking-wider">${displayTs}</div>
+                        </div>
+                    `;
+                }
             });
         }
 

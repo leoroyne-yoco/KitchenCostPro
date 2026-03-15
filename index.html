@@ -1075,15 +1075,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-white p-8 border-l-4 border-indigo-400 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <p class="text-[10px] font-black text-indigo-500 uppercase mb-2 flex justify-between items-center font-black uppercase">
-                                <span>Stock On Hand Value</span>
-                                <i onclick="showMetricInfo('soh')" class="fa-solid fa-circle-info cursor-pointer opacity-50 hover:opacity-100 transition-opacity"></i>
-                            </p>
-                            <h3 id="dash-stock-value" class="text-3xl font-black text-indigo-600 leading-none font-mono font-black uppercase">R 0.00</h3>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1091,7 +1082,7 @@
             <!-- MENU CATALOGUE -->
             <div id="view-products" class="tab-view space-y-6 animate-fade-in">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <h2 class="text-2xl font-black uppercase">Menu Catalogue</h2>
+                    <h2 class="text-2xl font-black uppercase flex items-center gap-4">Menu Catalogue <i onclick="showHelpModal('menu')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <div class="flex gap-2 items-center">
 
                         <button
@@ -1140,7 +1131,7 @@
             <!-- RECIPE ARCHITECT -->
             <div id="view-recipes" class="tab-view h-full animate-fade-in space-y-6">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <h2 class="text-2xl font-black uppercase tracking-tight">Recipes</h2>
+                    <h2 class="text-2xl font-black uppercase tracking-tight flex items-center gap-4">Recipes <i onclick="showHelpModal('recipes')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <div class="flex flex-wrap gap-2 justify-end items-center">
                         <div class="relative">
                             <button data-action-dropdown-button onclick="toggleActionDropdown('ddExportRecipes')"
@@ -1253,7 +1244,7 @@
             <!-- VIEW: STOCK MASTER -->
             <div id="view-ingredients" class="tab-view space-y-6 animate-fade-in">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <h2 class="text-2xl font-black uppercase tracking-tight">Stock Master</h2>
+                    <h2 class="text-2xl font-black uppercase tracking-tight flex items-center gap-4">Stock Master <i onclick="showHelpModal('inventory')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <div class="flex flex-wrap gap-2 justify-end">
                         <div class="relative">
                             <button data-action-dropdown-button onclick="toggleActionDropdown('ddExportStock')"
@@ -1369,7 +1360,7 @@
                         <div class="lg:col-span-8 grv-card grv-draft-panel flex flex-col overflow-hidden min-h-0">
                             <div class="grv-topbar px-10 py-8 flex items-center justify-between">
                                 <div class="flex items-center gap-4">
-                                    <h3 class="text-white text-2xl font-black tracking-tight leading-none">Draft Table
+                                    <h3 class="text-white text-2xl font-black tracking-tight leading-none flex items-center gap-4">Draft Table <i onclick="showHelpModal('grv')" class="fa-solid fa-circle-info text-white/20 hover:text-white/60 cursor-pointer text-lg transition-all"></i>
                                     </h3>
                                     <span id="grvItemCount"
                                         class="text-blue-500 font-black uppercase text-sm tracking-widest leading-none">0
@@ -1494,7 +1485,7 @@
                         <div
                             class="p-8 border-b dark:border-slate-700 flex justify-between items-center font-black uppercase tracking-widest text-xs text-red-600 leading-none">
                             <div class="flex items-center gap-4">
-                                <h3>Draft Return Breakdown</h3>
+                                <h3 class="flex items-center gap-4">Draft Return Breakdown <i onclick="showHelpModal('cn')" class="fa-solid fa-circle-info text-red-500/30 hover:text-red-500 cursor-pointer text-base transition-all"></i></h3>
                                 <span id="cnItemCount" class="text-red-500 font-black uppercase text-xs">0 Items</span>
                             </div>
                             <div class="flex items-center gap-3">
@@ -1574,8 +1565,8 @@
                 <div class="card-white p-12 shadow-xl border-blue-50">
                     <h3
                         class="text-2xl font-black flex items-center gap-4 uppercase tracking-tighter text-slate-900 dark:text-white leading-none mb-10 font-black uppercase">
-                        <i class="fa-solid fa-clipboard-check text-blue-600 uppercase font-black"></i> Manual Correct
-                        Engine
+                        <i class="fa-solid fa-clipboard-check text-blue-600 uppercase font-black"></i> Manual Correct Engine
+                        <i onclick="showHelpModal('adjustments')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all ml-auto"></i>
                     </h3>
                     <div class="text-center py-10 space-y-6">
                         <p class="text-slate-500 text-sm font-black uppercase tracking-widest leading-relaxed">
@@ -1598,8 +1589,8 @@
             <div id="view-stock-count" class="tab-view animate-fade-in space-y-6 font-black uppercase">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
                     <h2
-                        class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-black uppercase">
-                        Physical Stock Take</h2>
+                        class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none font-black uppercase flex items-center gap-4">
+                        Physical Stock Take <i onclick="showHelpModal('stocktake')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <div class="flex flex-wrap gap-2 justify-end items-center font-black uppercase"><input type="date"
                             id="stockCountDate" class="input-light font-black uppercase text-xs shadow-inner"><button
                             onclick="openScanCountModal()"
@@ -1664,7 +1655,7 @@
             <div id="view-mfg-products"
                 class="tab-view py-10 space-y-6 animate-fade-in uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6 px-10">
-                    <h2 class="text-2xl font-black uppercase tracking-tight">Manufacturing</h2>
+                    <h2 class="text-2xl font-black uppercase tracking-tight flex items-center gap-4">Manufacturing <i onclick="showHelpModal('manufacturing')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <div class="flex flex-wrap gap-2 justify-end items-center">
                         <div class="relative">
                             <button data-action-dropdown-button onclick="toggleActionDropdown('ddExportMFG')"
@@ -1779,6 +1770,10 @@
                 
                 <!-- NEW REPORTS HUB -->
                 <div id="report-hub" class="flex flex-col gap-10 pb-10 w-full animate-fade-in max-w-7xl mx-auto px-4">
+                    <div class="flex items-center gap-4 border-b dark:border-slate-700 pb-6">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Reporting Hub</h2>
+                        <i onclick="showHelpModal('reports')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-xl transition-all"></i>
+                    </div>
                     
                     <!-- SALES (Inventory reports) -->
                     <div class="flex flex-col gap-6">
@@ -1983,9 +1978,12 @@
                                 <div class="flex items-center gap-2 px-2 text-[9px] font-black uppercase tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">
                                     <i class="fa-solid fa-calendar-day"></i> <span>Range</span>
                                 </div>
-                                <input type="date" id="reportStartDate" class="bg-transparent border-0 text-[10px] font-black uppercase p-1 focus:ring-0 cursor-pointer" onchange="runActiveReportSearch()">
+                                <input type="date" id="reportStartDate" class="bg-transparent border-0 text-[10px] font-black uppercase p-1 focus:ring-0 cursor-pointer">
                                 <span class="opacity-30 text-[9px]">→</span>
-                                <input type="date" id="reportEndDate" class="bg-transparent border-0 text-[10px] font-black uppercase p-1 focus:ring-0 cursor-pointer" onchange="runActiveReportSearch()">
+                                <input type="date" id="reportEndDate" class="bg-transparent border-0 text-[10px] font-black uppercase p-1 focus:ring-0 cursor-pointer">
+                                <button onclick="runActiveReportSearch()" class="ml-1 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[9px] font-black uppercase tracking-widest rounded-lg transition-all shadow-sm" title="Apply date filter">
+                                    <i class="fa-solid fa-filter mr-1"></i> Apply
+                                </button>
                             </div>
 
                             <select id="reportCategoryFilter" class="hidden bg-slate-50 dark:bg-slate-900 border-0 rounded-xl text-[10px] font-black uppercase py-2 px-4 shadow-inner" onchange="switchReportTab(currentReportType)">
@@ -2002,7 +2000,7 @@
                         </div>
                     </div>
 
-                <div id="report-content" class="flex flex-col bg-white dark:bg-slate-800 rounded-[3rem] border dark:border-slate-700 shadow-xl font-black uppercase overflow-hidden">
+                <div id="report-content" class="flex-1 flex flex-col bg-white dark:bg-slate-800 rounded-[3xl] border dark:border-slate-700 shadow-xl font-black uppercase overflow-hidden min-h-[500px]">
                     <div id="report-view-menu" class="report-sub-view flex flex-col">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left font-black uppercase shadow-sm" id="reportMenuTable">
@@ -2119,12 +2117,12 @@
                                 <thead class="table-header-light text-[10px]">
                                     <tr>
                                         <th class="px-10 py-6">Inventory Category</th>
-                                        <th class="px-6 py-6 text-right">Opening Stock Value</th>
-                                        <th class="px-6 py-6 text-right">Purchases</th>
-                                        <th class="px-6 py-6 text-right">Closing Stock Value</th>
-                                        <th class="px-6 py-6 text-right">COS Actual</th>
-                                        <th class="px-6 py-6 text-right">COS Theoretical</th>
-                                        <th class="px-10 py-6 text-right text-emerald-600">COS Difference</th>
+                                        <th class="px-6 py-6 text-right">Opening Stock Value <i onclick="showReportColumnInfo('ops_opening')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-right">Purchases <i onclick="showReportColumnInfo('ops_purchases')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-right">Closing Stock Value <i onclick="showReportColumnInfo('ops_closing')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-right">COS Actual <i onclick="showReportColumnInfo('ops_cos_actual')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-right">COS Theoretical <i onclick="showReportColumnInfo('ops_cos_theo')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-10 py-6 text-right text-emerald-600">COS Difference <i onclick="showReportColumnInfo('ops_cos_diff')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody id="reportOpsOverviewBody"></tbody>
@@ -2137,13 +2135,13 @@
                             <table class="w-full text-left uppercase font-black" id="reportOpsDashboardTable">
                                 <thead class="table-header-light text-[10px]">
                                     <tr>
-                                        <th class="px-10 py-6 text-center">Purchases</th>
-                                        <th class="px-6 py-6 text-center">Opening Stock Value</th>
-                                        <th class="px-6 py-6 text-center">Closing Stock Value</th>
-                                        <th class="px-6 py-6 text-center">Count Variances</th>
-                                        <th class="px-6 py-6 text-center">Manual Adjustments</th>
-                                        <th class="px-6 py-6 text-center">Wastage</th>
-                                        <th class="px-10 py-6 text-center">Cost Of Sales</th>
+                                        <th class="px-10 py-6 text-center">Purchases <i onclick="showReportColumnInfo('dash_purchases')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-center">Opening Stock Value <i onclick="showReportColumnInfo('dash_opening')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-center">Closing Stock Value <i onclick="showReportColumnInfo('dash_closing')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-center">Count Variances <i onclick="showReportColumnInfo('dash_variances')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-center">Manual Adjustments <i onclick="showReportColumnInfo('dash_adjustments')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-6 py-6 text-center">Wastage <i onclick="showReportColumnInfo('dash_wastage')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
+                                        <th class="px-10 py-6 text-center">Cost Of Sales <i onclick="showReportColumnInfo('dash_cos')" class="fa-solid fa-circle-info cursor-pointer opacity-40 hover:opacity-100 transition-opacity ml-1"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody id="reportOpsDashboardBody"></tbody>
@@ -2158,6 +2156,7 @@
                                     <tr>
                                         <th class="px-10 py-6">Ingredient</th>
                                         <th class="px-6 py-6">Category</th>
+                                        <th class="px-6 py-6 text-center">Location</th>
                                         <th class="px-6 py-6 text-right">Qty Depleted</th>
                                         <th class="px-6 py-6 text-right">Unit Cost</th>
                                         <th class="px-10 py-6 text-right">Total Impact (Ex)</th>
@@ -2237,8 +2236,8 @@
                             class="fa-solid fa-cloud-arrow-up text-blue-500 uppercase font-black uppercase font-black uppercase font-black uppercase"></i>
                     </div>
                     <h2
-                        class="text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none mb-2 font-black font-black uppercase font-black uppercase font-black uppercase">
-                        Synchronize sales</h2>
+                        class="text-2xl font-black uppercase tracking-tighter text-slate-900 dark:text-white leading-none mb-2 font-black font-black uppercase font-black uppercase font-black uppercase flex items-center justify-center gap-4">
+                        Synchronize sales <i onclick="showHelpModal('sales_sync')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-lg transition-all"></i></h2>
                     <p
                         class="text-slate-500 text-sm mt-2 mb-8 font-black opacity-60 uppercase tracking-tighter leading-none font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
                         Import POS data to auto-calculate ingredient depletion.</p>
@@ -2260,7 +2259,7 @@
             <div id="view-transfers" class="tab-view max-w-5xl mx-auto py-10 animate-fade-in uppercase font-black">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-[calc(100vh-14rem)]">
                     <div class="card-white p-8 space-y-6 flex flex-col h-full overflow-hidden">
-                        <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-blue-600 leading-none">New Transfer</h3>
+                        <h3 class="text-xl font-black mb-4 uppercase tracking-tighter text-blue-600 leading-none flex items-center gap-4">New Transfer <i onclick="showHelpModal('transfers')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-sm transition-all"></i></h3>
                         <div class="space-y-4">
                             <div>
                                 <label class="block mb-2 text-[10px] text-slate-400 tracking-widest leading-none">From Location</label>
@@ -2306,7 +2305,7 @@
                 <div class="card-white p-12 space-y-8 shadow-2xl">
                     <div class="flex items-center justify-between border-b pb-8">
                         <div>
-                            <h3 class="text-3xl font-black text-slate-900 dark:text-white uppercase leading-none mb-2">Stock Locations</h3>
+                            <h3 class="text-3xl font-black text-slate-900 dark:text-white uppercase leading-none mb-2 flex items-center gap-4">Stock Locations <i onclick="showHelpModal('locations')" class="fa-solid fa-circle-info text-blue-500/30 hover:text-blue-500 cursor-pointer text-xl transition-all"></i></h3>
                             <p class="text-[10px] text-slate-400 font-black tracking-widest uppercase">Manage storage areas & prep zones</p>
                         </div>
                         <div class="bg-blue-50 text-blue-600 p-4 rounded-2xl flex items-center gap-4">
@@ -2334,69 +2333,105 @@
             </div>
 
             <!-- SETTINGS -->
-            <div id="view-settings"
-                class="tab-view max-w-4xl mx-auto py-10 animate-fade-in uppercase font-black pb-32">
-                <div class="card-white p-6 md:p-12 space-y-8 shadow-2xl border-blue-50 font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                    <div
-                        class="grid grid-cols-1 md:grid-cols-2 gap-12 font-black uppercase text-[10px] tracking-widest leading-none font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                        <div
-                            class="space-y-4 text-slate-400 font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                            <h4
-                                class="text-lg font-black dark:text-white text-slate-900 font-black uppercase leading-none uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                                <i
-                                    class="fa-solid fa-percent text-blue-600 mr-2 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></i>Tax
-                                hub
-                            </h4>
-                            <div
-                                class="p-6 bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 rounded-3xl shadow-inner font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                                <label
-                                    class="block mb-3 text-slate-400 leading-none font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase">Vat
-                                    Rate %</label><input type="number" id="settingVatRate" onchange="saveSettings()"
-                                    class="w-full input-light text-3xl text-slate-900 dark:text-white font-black shadow-inner font-mono font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase mb-6">
-
-                                <label
-                                    class="block mb-3 text-slate-400 leading-none font-black uppercase">Site
-                                    Name</label><input type="text" id="settingSiteName" onchange="saveSettings()"
-                                    placeholder="e.g. Main Kitchen"
-                                    class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner mb-6">
-
-                                <label
-                                    class="block mb-3 text-slate-400 leading-none font-black uppercase">Trading Time (End of Day)</label>
-                                <input type="time" id="settingTradingTime" onchange="saveSettings()"
-                                    class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner mb-6">
-
-                                <label
-                                    class="block mb-3 text-slate-400 leading-none font-black uppercase">UI Scale (Accessibility)</label>
-                                <select id="settingUiScale" onchange="saveSettings()"
-                                    class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner">
-                                    <option value="normal">Normal</option>
-                                    <option value="large">Large Text</option>
-                                </select>
+            <div id="view-settings" class="tab-view max-w-4xl mx-auto py-10 animate-fade-in uppercase font-black pb-32">
+                <div class="space-y-8">
+                    <!-- Onboarding Guide -->
+                    <div class="card-white p-8 bg-blue-50/30 dark:bg-blue-900/10 border-blue-100 dark:border-blue-900/30 shadow-sm">
+                        <h4 class="text-lg font-black text-slate-900 dark:text-white mb-6 uppercase flex items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap text-blue-600"></i> How to Get Started
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">1</span>
+                                    <h5 class="text-[11px] font-black uppercase text-slate-800 dark:text-slate-200">Set Up Locations</h5>
+                                </div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase leading-relaxed">Create your stock locations (e.g., Main Store, Bar, Kitchen). Every business needs at least one.</p>
                             </div>
-
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">2</span>
+                                    <h5 class="text-[11px] font-black uppercase text-slate-800 dark:text-slate-200">POS Catalogue</h5>
+                                </div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase leading-relaxed">Go to "Menu Catalogue" and import your product list from your POS system first.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">3</span>
+                                    <h5 class="text-[11px] font-black uppercase text-slate-800 dark:text-slate-200">Import Ingredients</h5>
+                                </div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase leading-relaxed">Go to Inventory, use "Export Template", fill it in, and "Import" to load your data.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">4</span>
+                                    <h5 class="text-[11px] font-black uppercase text-slate-800 dark:text-slate-200">Build Recipes</h5>
+                                </div>
+                                <p class="text-[10px] text-slate-500 font-bold uppercase leading-relaxed">Link Menu Items to Ingredients so "Sales Sync" can automatically deduct stock levels.</p>
+                            </div>
                         </div>
-                        <div
-                            class="space-y-4 text-slate-400 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                            <h4
-                                class="text-lg font-black dark:text-white text-slate-900 font-black uppercase leading-none uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                                <i
-                                    class="fa-solid fa-floppy-disk text-emerald-600 mr-2 uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase"></i>Infrastructure
-                            </h4>
-                            <div
-                                class="grid grid-cols-1 gap-3 font-black uppercase font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase">
-                                <button onclick="exportAllAppData()"
-                                    class="w-full p-6 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Save
-                                    full snapshot</button><button
-                                    onclick="confirmImport('snapshotImportInput', 'Importing a full snapshot will replace your current local session data. Continue?')"
-                                    class="w-full p-6 bg-blue-50 text-blue-700 border-2 border-blue-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase shadow-sm">Import
-                                    full snapshot</button><button onclick="openClearAllDataModal()"
-                                    class="w-full p-6 bg-red-50 text-red-700 border-2 border-red-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase font-black font-black uppercase shadow-sm font-black font-black uppercase font-black uppercase font-black uppercase font-black uppercase font-black uppercase">Kill
-                                    local session</button>
+                        <div class="mt-8 pt-8 border-t border-blue-100 dark:border-blue-900/30 flex flex-wrap gap-4">
+                            <div class="flex-1 min-w-[200px] p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-blue-50 dark:border-blue-900/20">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fa-solid fa-truck-ramp-box text-blue-500"></i>
+                                    <h6 class="text-[9px] font-black uppercase tracking-widest leading-none">Standard Flow</h6>
+                                </div>
+                                <p class="text-[9px] text-slate-400 font-black uppercase">Finalize GRVs → Sync Sales → Audit via Movement Reports.</p>
+                            </div>
+                            <div class="flex-1 min-w-[200px] p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-blue-50 dark:border-blue-900/20">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <i class="fa-solid fa-circle-info text-blue-500"></i>
+                                    <h6 class="text-[9px] font-black uppercase tracking-widest leading-none">Contextual Help</h6>
+                                </div>
+                                <p class="text-[9px] text-slate-400 font-black uppercase">Look for the <i class="fa-solid fa-circle-info text-blue-400 mx-1"></i> icons for in-depth section guides.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Settings -->
+                    <div class="card-white p-12 shadow-2xl border-blue-50">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-[10px] tracking-widest leading-none">
+                            <div class="space-y-4 text-slate-400">
+                                <h4 class="text-lg font-black dark:text-white text-slate-900 leading-none uppercase">
+                                    <i class="fa-solid fa-percent text-blue-600 mr-2"></i>Tax Hub
+                                </h4>
+                                <div class="p-6 bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 rounded-3xl shadow-inner space-y-6">
+                                    <div>
+                                        <label class="block mb-3 text-slate-400 leading-none">Vat Rate %</label>
+                                        <input type="number" id="settingVatRate" onchange="saveSettings()" class="w-full input-light text-3xl text-slate-900 dark:text-white font-black shadow-inner font-mono mb-2">
+                                    </div>
+                                    <div>
+                                        <label class="block mb-3 text-slate-400 leading-none">Site Name</label>
+                                        <input type="text" id="settingSiteName" onchange="saveSettings()" placeholder="e.g. Main Kitchen" class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner">
+                                    </div>
+                                    <div>
+                                        <label class="block mb-3 text-slate-400 leading-none">Trading Time (End of Day)</label>
+                                        <input type="time" id="settingTradingTime" onchange="saveSettings()" class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner">
+                                    </div>
+                                    <div>
+                                        <label class="block mb-3 text-slate-400 leading-none">UI Scale (Accessibility)</label>
+                                        <select id="settingUiScale" onchange="saveSettings()" class="w-full input-light text-xl text-slate-900 dark:text-white font-black shadow-inner">
+                                            <option value="normal">Normal</option>
+                                            <option value="large">Large Text</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-4 text-slate-400">
+                                <h4 class="text-lg font-black dark:text-white text-slate-900 leading-none uppercase">
+                                    <i class="fa-solid fa-floppy-disk text-emerald-600 mr-2"></i>Infrastructure
+                                </h4>
+                                <div class="grid grid-cols-1 gap-3">
+                                    <button onclick="exportAllAppData()" class="w-full p-6 bg-emerald-50 text-emerald-700 border-2 border-emerald-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase">Save full snapshot</button>
+                                    <button onclick="confirmImport('snapshotImportInput', 'Importing a full snapshot will replace your current local session data. Continue?')" class="w-full p-6 bg-blue-50 text-blue-700 border-2 border-blue-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase">Import full snapshot</button>
+                                    <button onclick="openClearAllDataModal()" class="w-full p-6 bg-red-50 text-red-700 border-2 border-red-100 rounded-2xl hover:scale-[1.02] transition-all shadow-sm font-black uppercase">Kill local session</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
     </main>
@@ -2462,6 +2497,8 @@
             logs_mfg: [],
             logs_sales: [],
             logs_transfers: [],
+            logs_snapshots: [],
+            sessionOpeningStock: {},
             processedSalesSignatures: []
         };
         const STORAGE_KEY = 'kcp_luxe_v2_data';
@@ -2572,7 +2609,14 @@
 
 
         // --- GLOBAL CORE UTILS ---
-        function formatCurrency(v) { return new Intl.NumberFormat('en-ZA', { style: 'currency', currency: 'ZAR' }).format(v || 0); }
+        function formatCurrency(v, decimals = 2) { 
+            return new Intl.NumberFormat('en-ZA', { 
+                style: 'currency', 
+                currency: 'ZAR', 
+                minimumFractionDigits: decimals, 
+                maximumFractionDigits: decimals 
+            }).format(v || 0); 
+        }
         function showToast(msg, type = 'success') {
             const cont = document.getElementById('toast-container');
             if (!cont) return;
@@ -2618,7 +2662,24 @@
         }
 
 
-        function closeModal() { const mb = document.getElementById('modal-backdrop'); const mc = document.getElementById('modal-container'); if (mc) mc.classList.remove('modal-wide'); if (mb) { mb.classList.add('hidden'); mb.classList.remove('flex'); } }
+        function closeModal() {
+            const mb = document.getElementById('modal-backdrop');
+            const mc = document.getElementById('modal-container');
+            if (mc) mc.classList.remove('modal-wide', 'modal-xl');
+            if (mb) {
+                mb.classList.add('hidden');
+                mb.classList.remove('flex');
+            }
+        }
+        // Generic openModal function for help modals and others
+        function openModal(contentHtml) {
+            const mb = document.getElementById('modal-backdrop');
+            const mc = document.getElementById('modal-container');
+            if (!mc || !mb) return;
+            mc.innerHTML = contentHtml;
+            mb.classList.remove('hidden');
+            mb.classList.add('flex');
+        }
         function toggleSidebar(force) { const sb = document.getElementById('sidebar'); if (!sb) return; if (force === true) sb.classList.remove('-translate-x-full'); else sb.classList.add('-translate-x-full'); }
 
         let currentScannerInputId = null;
@@ -3026,6 +3087,7 @@
                     // 1. Initialize logs
                     const logKeys = ['logs_grv', 'logs_cn', 'logs_adj', 'logs_stocktakes', 'logs_mfg', 'logs_snapshots', 'logs_sales', 'logs_transfers'];
                     logKeys.forEach(k => { if (!appData[k]) appData[k] = []; });
+                    if (!appData.sessionOpeningStock) appData.sessionOpeningStock = {};
 
                     // 2. Multi-Location Initialization & Migration
                     if (!appData.locations || appData.locations.length === 0) {
@@ -3064,8 +3126,8 @@
             applyTheme('dark');
         }
         function saveData() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); updateDashboard();
-            updateFilterDropdowns();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); 
+            updateDashboard();
             updateFilterDropdowns();
         }
         function saveSettings() {
@@ -3113,12 +3175,16 @@
 
         function deleteLocation(id) {
             if (id === 'main') return showToast("Cannot delete primary store", "error");
-            if (!confirm("Delete this location? Any items here will stay in system total but location balance will be lost.")) return;
+            
+            const loc = appData.locations.find(l => l.id === id);
+            if (!loc) return;
 
-            appData.locations = appData.locations.filter(l => l.id !== id);
-            saveData();
-            renderLocationList();
-            showToast("Location removed", "success");
+            openGentleConfirmModal(`Delete location "${loc.name}"? Any items here will stay in system total but location balance will be lost.`, () => {
+                appData.locations = appData.locations.filter(l => l.id !== id);
+                saveData();
+                renderLocationList();
+                showToast("Location removed", "success");
+            }, "Delete location");
         }
 
         function editLocation(id) {
@@ -3206,13 +3272,27 @@
             const lastSnapshotDate = appData.logs_snapshots.length > 0 ? appData.logs_snapshots[appData.logs_snapshots.length-1].date : null;
             const todayStr = isoToday();
             
-            // If now is past trading time AND we don't have a snapshot for today yet
             if (now >= tradeTimeToday && lastSnapshotDate !== todayStr) {
                 const stockValue = (appData.ingredients || []).reduce((acc, i) => acc + ((i.cost || 0) * (i.stock || 0)), 0);
+                
+                // Detailed Item & Location breakdown
+                const items = {};
+                const items_by_loc = {};
+                (appData.locations || []).forEach(l => items_by_loc[l.id] = {});
+                
+                (appData.ingredients || []).forEach(i => {
+                    items[i.id] = (i.stock || 0);
+                    (appData.locations || []).forEach(l => {
+                        items_by_loc[l.id][i.id] = (i.balances?.[l.id] || 0);
+                    });
+                });
+
                 appData.logs_snapshots.push({
                     date: todayStr,
                     timestamp: now.toISOString(),
-                    value: stockValue
+                    value: stockValue,
+                    items: items,
+                    items_by_loc: items_by_loc
                 });
                 saveData();
             }
@@ -3228,8 +3308,8 @@
             const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
             
             // TOP 4 SUMMARY CARDS
-            setTxt('dash-stock-value-top', formatCurrency(stockValue));
-            setTxt('head-stock-val', formatCurrency(stockValue));
+            setTxt('dash-stock-value-top', formatCurrency(stockValue, 2));
+            setTxt('head-stock-val', formatCurrency(stockValue, 2));
             setTxt('dash-product-count', products.length);
             setTxt('dash-low-stock', lowCount);
             
@@ -3253,10 +3333,25 @@
             const cnToday = (appData.logs_cn || []).filter(l => l.date === today).reduce((acc, l) => acc + (l.totalEx || 0), 0);
             const purchases = grvToday - cnToday;
             
-            // 2. Opening Stock (Latest snapshot prior to today)
-            const priorSnaps = (appData.logs_snapshots || []).filter(s => s.date < today).sort((a,b) => b.date.localeCompare(a.date));
+            // 2. Opening Stock (Stable snapshot or session lock)
+            const searchDate = today;
+            const priorSnaps = (appData.logs_snapshots || []).filter(s => s.date < searchDate).sort((a,b) => b.date.localeCompare(a.date));
             const openingSnap = priorSnaps[0];
-            const opening = openingSnap ? openingSnap.value : 0;
+            let opening = 0;
+            
+            if (openingSnap) {
+                opening = openingSnap.value;
+            } else {
+                // Stabilize opening by locking it in the session if no snapshot exists
+                if (!appData.sessionOpeningStock) appData.sessionOpeningStock = {};
+                if (appData.sessionOpeningStock[searchDate] !== undefined) {
+                    opening = appData.sessionOpeningStock[searchDate];
+                } else {
+                    opening = stockValue; 
+                    appData.sessionOpeningStock[searchDate] = opening;
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+                }
+            }
             
             // 3. Closing Stock
             const snapToday = (appData.logs_snapshots || []).find(s => s.date === today);
@@ -3293,14 +3388,14 @@
             
             const totalWastage = wastTodayManual + wastMfg;
 
-            setTxt('dash-purchases', formatCurrency(purchases));
-            setTxt('dash-opening-stock', formatCurrency(opening));
-            setTxt('dash-closing-stock', formatCurrency(closing));
-            setTxt('dash-cos-actual', formatCurrency(cos));
-            setTxt('dash-count-variance', formatCurrency(varToday));
-            setTxt('dash-manual-adj', formatCurrency(adjTodayManual));
-            setTxt('dash-wastage', formatCurrency(totalWastage));
-            setTxt('dash-stock-value', formatCurrency(stockValue));
+            setTxt('dash-purchases', formatCurrency(purchases, 2));
+            setTxt('dash-opening-stock', formatCurrency(opening, 2));
+            setTxt('dash-closing-stock', formatCurrency(closing, 2));
+            setTxt('dash-cos-actual', formatCurrency(cos, 2));
+            setTxt('dash-count-variance', formatCurrency(varToday, 2));
+            setTxt('dash-manual-adj', formatCurrency(adjTodayManual, 2));
+            setTxt('dash-wastage', formatCurrency(totalWastage, 2));
+            setTxt('dash-stock-value', formatCurrency(stockValue, 2));
             
             const setPct = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val.toFixed(2) + '%'; };
             setPct('dash-count-variance-pct', stockValue > 0 ? (varToday / stockValue * 100) : 0);
@@ -3348,6 +3443,47 @@
             const m = info[metric];
             if (!m) return;
 
+            const cont = document.getElementById('modal-container');
+            cont.innerHTML = `
+                <div class="p-12 space-y-8 uppercase font-black">
+                    <div class="flex items-center gap-4">
+                        <i class="fa-solid fa-circle-info text-blue-600 text-3xl"></i>
+                        <h3 class="text-3xl font-black tracking-tighter">${m.title}</h3>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+                        <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed normal-case font-bold">
+                            ${m.desc}
+                        </p>
+                    </div>
+                    <div class="flex justify-end pt-4">
+                        <button onclick="closeModal()" class="btn-dark px-12 py-4 uppercase tracking-widest text-xs shadow-xl">Dismiss</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-backdrop').classList.remove('hidden');
+            document.getElementById('modal-backdrop').classList.add('flex');
+        }
+
+        function showReportColumnInfo(key) {
+            const info = {
+                ops_opening: { title: 'Opening Stock Value', desc: 'The total value of stock at the start of the selected period, sourced from the most recent daily snapshot before the start date. If no snapshot exists, it estimates at 95% of current stock value.' },
+                ops_purchases: { title: 'Purchases', desc: 'Total value of Goods Received (GRV) minus Credit Notes (CN) within the selected date range. All values are Excl. VAT.' },
+                ops_closing: { title: 'Closing Stock Value', desc: 'The current on-hand stock value (Excl. VAT), calculated as each item\'s current stock level × its last recorded unit cost.' },
+                ops_cos_actual: { title: 'COS Actual', desc: 'The actual Cost of Sales, calculated as:<br><br><b>Opening Stock + Purchases − Closing Stock</b><br><br>This reflects the true cost of goods consumed during the period.' },
+                ops_cos_theo: { title: 'COS Theoretical', desc: 'The ideal (theoretical) cost of goods that should have been consumed, calculated from recipe depletions triggered by recorded sales. Differences from COS Actual indicate waste, theft, or counting errors.' },
+                ops_cos_diff: { title: 'COS Difference', desc: 'The variance between COS Actual and COS Theoretical:<br><br><b>COS Actual − COS Theoretical</b><br><br>A positive (red) value indicates more stock was consumed than recipes predicted. A negative (green) value indicates less consumption than expected.' },
+                dash_purchases: { title: 'Purchases', desc: 'Total value of Goods Received (GRV) minus Credit Notes (CN) within the selected date range. All values are Excl. VAT.' },
+                dash_opening: { title: 'Opening Stock Value', desc: 'The total value of stock at the start of the selected period, sourced from the most recent daily snapshot before the start date. If no snapshot exists, it estimates at 95% of current stock value.' },
+                dash_closing: { title: 'Closing Stock Value', desc: 'The current on-hand stock value (Excl. VAT), or the snapshot value if one exists for the end date of the selected range.' },
+                dash_variances: { title: 'Count Variances', desc: 'The combined financial impact of differences found during Physical Stock Takes within the selected period. Calculated as variance quantity × unit cost for each item counted.' },
+                dash_adjustments: { title: 'Manual Adjustments', desc: 'The total value of manual stock corrections performed via the Manual Correct Engine, excluding those classified as wastage. This includes corrections for found stock or data entry fixes.' },
+                dash_wastage: { title: 'Wastage', desc: 'The total financial loss due to stock wastage. Includes manual adjustments marked as waste AND manufacturing variances (when actual production yield was less than expected).' },
+                dash_cos: { title: 'Cost Of Sales', desc: 'The actual Cost of Sales, calculated as:<br><br><b>Opening Stock + Purchases − Closing Stock</b><br><br>This reflects the true cost of goods consumed during the selected period.' }
+            };
+            const m = info[key];
+            if (!m) return;
+            showMetricInfo(key);
+            // Override showMetricInfo's lookup by directly rendering
             const cont = document.getElementById('modal-container');
             cont.innerHTML = `
                 <div class="p-12 space-y-8 uppercase font-black">
@@ -3469,9 +3605,9 @@
                         <span class="text-[8px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-200 px-2 py-[2px] rounded-full ml-2 font-black tracking-widest">${ing.unit || '-'}</span>
                     </td>
                     <td class="px-6 py-5 opacity-40 uppercase">${ing.category || '-'}</td>
-                    <td class="px-6 py-5 text-right font-mono">${formatCurrency(ing.cost)}</td>
+                    <td class="px-6 py-5 text-right font-mono">${formatCurrency(ing.cost, 2)}</td>
                     <td class="px-6 py-5 text-center font-bold">
-                        ${(locFilter ? (ing.balances?.[locFilter] || 0) : (ing.stock || 0)).toFixed(2)}
+                        ${(locFilter ? (ing.balances?.[locFilter] || 0) : (ing.stock || 0)).toFixed(3)}
                         <span class="ml-2 inline-flex items-center px-2 py-[2px] rounded-full text-[9px] font-black tracking-widest bg-slate-100 dark:bg-slate-800 opacity-80">${ing.unit || '-'}</span>
                     </td>
                     <td class="px-8 py-5 text-right opacity-0 group-hover:opacity-100 uppercase">
@@ -3606,8 +3742,11 @@
             const backdrop = document.getElementById('modal-backdrop');
             const cont = document.getElementById('modal-container');
             // Reset modal sizing
-            if (cont) cont.classList.remove('modal-wide');
-            if (backdrop) backdrop.classList.add('hidden');
+            if (cont) cont.classList.remove('modal-wide', 'modal-xl');
+            if (backdrop) {
+                backdrop.classList.add('hidden');
+                backdrop.classList.remove('flex');
+            }
             if (cont) cont.innerHTML = '';
         }
 
@@ -3684,7 +3823,6 @@
                 }
             });
             renderRecipeIngredients();
-            updateTheoCost();
             closeModalHub();
             showToast("Quantities updated", "success");
         }
@@ -4295,7 +4433,7 @@
             const listEl = document.getElementById('pickerList');
             if (listEl) listEl.innerHTML = _pickerRowsHtml(list);
             const countEl = document.getElementById('pickerSelectedCount');
-            if (countEl) countEl.textContent = String(_pickerSelected.size);
+            if (countEl) countEl.textContent = _pickerSelected.size;
         }
 
         function togglePickerItem(id) {
@@ -4688,7 +4826,102 @@
                 .replaceAll("'", "&#039;");
         }
 
-        // --- RECIPE MODALS ---
+        function showHelpModal(sectionId) {
+            const help = {
+                'dashboard': {
+                    title: 'Dashboard Overview',
+                    icon: 'fa-gauge-high',
+                    content: 'A birds-eye view of your business. Financial cards show Real-time valuation, while the Operations section shows historical performance across your selected date range. Click the info icons on report columns to see exact mathematical formulas used.'
+                },
+                'inventory': {
+                    title: 'Master Inventory',
+                    icon: 'fa-boxes-stacked',
+                    content: 'Manage your raw ingredients here. You can track individual stock levels across multiple locations. Key actions: Export/Import spreadsheet for bulk updates, set barcode IDs for scanning, and maintain unit costs.'
+                },
+                'recipes': {
+                    title: 'Recipe & Product Engine',
+                    icon: 'fa-utensils',
+                    content: 'Link your menu products to your raw inventory. When you sell a product (via Sales Sync), the system uses these recipes to calculate exactly how many ingredients to deduct from your store.'
+                },
+                'grv': {
+                    title: 'Purchasing (GRV)',
+                    icon: 'fa-truck-ramp-box',
+                    content: 'Record new stock coming into your business. Enter supplier details and invoice numbers. Committing a GRV increases your on-hand stock levels and updates ingredient unit costs based on the latest prices.'
+                },
+                'cn': {
+                    title: 'Credit Notes',
+                    icon: 'fa-rotate-left',
+                    content: 'Record stock being returned to suppliers. Similar to a GRV, but committing a Credit Note reduces your on-hand stock levels.'
+                },
+                'adjustments': {
+                    title: 'Manual Adjustments',
+                    icon: 'fa-clipboard-check',
+                    content: 'Use this tool to record wastage, breakage, or manual overrides. Select an item, choose a location, and enter the adjustment quantity. Positive values increase stock; negative values decrease it.'
+                },
+                'stocktake': {
+                    title: 'Physical Stock Take',
+                    icon: 'fa-list-check',
+                    content: 'Perform a full audit of your physical shelf counts. Enter what you actually see on the shelf. The system compares this to the "Ideal" system level and calculates a variance impact (Shrinkage).'
+                },
+                'manufacturing': {
+                    title: 'Manufacturing / Prep',
+                    icon: 'fa-flask-vial',
+                    content: 'Manage items you make in-house (e.g., Prepared Sauces). Post a production batch to deduct the raw ingredients and increase the stock of the final prep item simultaneously.'
+                },
+                'reports': {
+                    title: 'Reporting Hub',
+                    icon: 'fa-chart-pie',
+                    content: 'Access all your data here. Log reports show historical transactions (GRVs, Sales, Adjustments). Operations reports calculate COS (Cost of Sales) and GP (Gross Profit) based on opening/closing stock snapshots.'
+                },
+                'sales_sync': {
+                    title: 'Sales Sync',
+                    icon: 'fa-cloud-arrow-up',
+                    content: 'Import your sales reports (CSV/XLSX) from your POS system. The system will look at your recipes and location data to automatically deduct the correct ingredients from stock.'
+                },
+                'transfers': {
+                    title: 'Stock Transfers',
+                    icon: 'fa-truck-moving',
+                    content: 'Move inventory between your internal locations (e.g., from Main Store to Bar). This keeps your location-specific reports accurate without affecting your total business valuation.'
+                },
+                'menu': {
+                    title: 'Menu Catalogue',
+                    icon: 'fa-book-open',
+                    content: 'View and manage your finished menu items. This catalogue is typically imported from your POS system. For each item, you can link a recipe in the "Recipes" section to enable automatic stock deduction.'
+                },
+                'locations': {
+                    title: 'Stock Locations',
+                    icon: 'fa-map-location-dot',
+                    content: 'Manage the physical areas where your stock is stored (e.g. Main Store, Bar, Kitchen). Maintaining accurate locations ensures that "Sales Sync" and "Stock Take" accurately reflect what should be on each shelf.'
+                }
+            };
+
+            const data = help[sectionId];
+            if (!data) return;
+
+            openModal(`
+                <div class="p-10 space-y-6">
+                    <div class="flex items-center gap-6 mb-4">
+                        <div class="w-16 h-16 bg-blue-50 dark:bg-blue-900/30 text-blue-600 rounded-3xl flex items-center justify-center text-2xl shadow-inner shrink-0 text-blue-500">
+                            <i class="fa-solid ${data.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black uppercase text-slate-800 dark:text-white tracking-tighter leading-none">${data.title}</h3>
+                            <p class="text-[10px] text-blue-500 font-black uppercase tracking-widest mt-2">Section Guide</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900/50 p-8 rounded-3xl border dark:border-slate-700 shadow-inner">
+                        <p class="text-[11px] text-slate-600 dark:text-slate-300 font-bold uppercase leading-relaxed tracking-wide">
+                            ${data.content}
+                        </p>
+                    </div>
+                    <div class="flex justify-end pt-4">
+                        <button onclick="closeModal()" class="px-10 py-4 btn-dark text-[10px] uppercase font-black tracking-widest leading-none">Understood</button>
+                    </div>
+                </div>
+            `);
+        }
+
+        // --- CORE UI MODALS ---
 
         function openAddIngredientToRecipeModal() {
             if (!selectedProduct) return showToast("Select a recipe first", "error");
@@ -5153,17 +5386,48 @@
             const m = appData.ingredients.find(i => i.id == selectedMfg);
             const cont = document.getElementById('modal-container');
             const locOptions = (appData.locations || []).map(l => `<option value="${l.id}">${l.name}</option>`).join('');
-            cont.innerHTML = `<div class="p-12 space-y-8 uppercase font-black"><h3 class="text-3xl font-black">Record production</h3><p class="text-[10px] text-slate-400 font-bold uppercase">Deduct raw materials and update prepped stock for [${m.name}].</p><div class="grid grid-cols-2 gap-6 uppercase font-black"><div class="space-y-4"><label class="text-[10px] text-slate-500 font-black">Expected Qty (${m.unit})</label><input type="number" id="batch_qty_expected" placeholder="e.g. 10.00" class="w-full input-light font-black text-xl shadow-inner font-mono"></div><div class="space-y-4"><label class="text-[10px] text-slate-500 font-black">Actual Produced (${m.unit})</label><input type="number" id="batch_qty_produced" placeholder="e.g. 9.50" class="w-full input-light font-black text-xl shadow-inner font-mono"></div><div class="space-y-4 col-span-2"><label class="text-[10px] text-slate-500 font-black">Stock Location</label><select id="batch_location" class="w-full input-light font-black text-xl shadow-inner">${locOptions}</select></div></div><div class="flex gap-4 pt-6 font-black uppercase"><button onclick="closeModal()" class="flex-1 font-bold text-slate-400 py-4 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-2xl text-xs uppercase">Abort</button><button onclick="commitProductionBatch()" class="flex-1 btn-primary shadow-xl font-black text-xs uppercase">Post Batch</button></div></div>`;
+            cont.innerHTML = `<div class="p-12 space-y-8 uppercase font-black">
+                <h3 class="text-3xl font-black">Record production</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Deduct raw materials and update prepped stock for [${m.name}].</p>
+                <div class="grid grid-cols-2 gap-6 uppercase font-black">
+                    <div class="space-y-4 col-span-2">
+                        <label class="text-[10px] text-blue-600 font-black">Number of Batches (Multiplier)</label>
+                        <input type="number" id="batch_multiplier" value="1" min="1" step="1" class="w-full input-light font-black text-2xl shadow-inner font-mono border-blue-200">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] text-slate-500 font-black">Yield Per Batch (${m.unit})</label>
+                        <input type="number" id="batch_qty_expected" value="${m.yieldBatch || 1}" class="w-full input-light font-black text-xl shadow-inner font-mono">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] text-slate-500 font-black">Actual Per Batch (${m.unit})</label>
+                        <input type="number" id="batch_qty_produced" value="${m.yieldBatch || 1}" class="w-full input-light font-black text-xl shadow-inner font-mono">
+                    </div>
+                    <div class="space-y-4 col-span-2">
+                        <label class="text-[10px] text-slate-500 font-black">Stock Location</label>
+                        <select id="batch_location" class="w-full input-light font-black text-xl shadow-inner">${locOptions}</select>
+                    </div>
+                </div>
+                <div class="flex gap-4 pt-6 font-black uppercase">
+                    <button onclick="closeModal()" class="flex-1 font-bold text-slate-400 py-4 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-2xl text-xs uppercase">Abort</button>
+                    <button onclick="commitProductionBatch()" class="flex-1 btn-primary shadow-xl font-black text-xs uppercase">Post Batch</button>
+                </div>
+            </div>`;
             document.getElementById('modal-backdrop').classList.remove('hidden'); document.getElementById('modal-backdrop').classList.add('flex');
         }
 
         function commitProductionBatch() {
-            const produced = parseFloat(document.getElementById('batch_qty_produced').value);
-            if (isNaN(produced)) return;
+            const mult = parseFloat(document.getElementById('batch_multiplier')?.value || 1);
+            const pPerBatch = parseFloat(document.getElementById('batch_qty_produced').value);
+            const ePerBatch = parseFloat(document.getElementById('batch_qty_expected')?.value || pPerBatch);
+            
+            if (isNaN(mult) || isNaN(pPerBatch)) return;
+
+            const produced = pPerBatch * mult;
+            const expected = ePerBatch * mult;
+
             const m = appData.ingredients.find(i => i.id == selectedMfg);
             if (!m.recipe || m.recipe.length === 0) return showToast("Blueprint required.", "error");
             
-            const expected = parseFloat(document.getElementById('batch_qty_expected')?.value || produced);
             const varianceQty = expected - produced;
             const locId = document.getElementById('batch_location')?.value || 'main';
             
@@ -5347,7 +5611,7 @@
 
             // Show/Hide date filters for log-based reports
             const dateFilters = document.getElementById('reportDateFilters');
-            const logReports = ['menu', 'stock', 'grv', 'cn', 'adj', 'stocktake', 'mfg', 'missing_recipes', 'low_stock', 'movement', 'transfers', 'ops_overview', 'ops_dashboard', 'sale_movement', 'sync_log', 'activity_log'];
+            const logReports = ['grv', 'cn', 'adj', 'stocktake', 'mfg', 'movement', 'transfers', 'ops_overview', 'ops_dashboard', 'sale_movement', 'sync_log', 'activity_log'];
             if (dateFilters) {
                 if (logReports.includes(type)) {
                     dateFilters.classList.remove('hidden');
@@ -5458,12 +5722,12 @@
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700/50 transition-colors">
                         <td class="px-10 py-6 font-bold text-slate-700 dark:text-slate-100">${cat.toUpperCase()}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(opening)}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(purchases)}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(closing)}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(cosActual)}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(cosTheoretical)}</td>
-                        <td class="px-10 py-6 text-right font-mono font-black ${cosDiff > 0 ? 'text-red-500' : 'text-emerald-600'}">${formatCurrency(cosDiff)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(opening, 2)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(purchases, 2)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(closing, 2)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(cosActual, 2)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(cosTheoretical, 2)}</td>
+                        <td class="px-10 py-6 text-right font-mono font-black ${cosDiff > 0 ? 'text-red-500' : 'text-emerald-600'}">${formatCurrency(cosDiff, 2)}</td>
                     </tr>
                 `;
             });
@@ -5473,29 +5737,59 @@
             const tbody = document.getElementById('reportOpsDashboardBody'); if (!tbody) return; tbody.innerHTML = '';
             const start = document.getElementById('reportStartDate')?.value || '';
             const end = document.getElementById('reportEndDate')?.value || '';
+            const ingredients = appData.ingredients || [];
 
-            let purchases = 0, opening = 0, closing = 0, variances = 0, adjustments = 0, wastage = 0, cosTh = 0, netSales = 0;
+            let purchases = 0, opening = 0, closing = 0, variances = 0, adjustments = 0, wastage = 0, netSales = 0;
 
+            // --- Purchases: GRV - CN (same logic as dashboard) ---
             (appData.logs_grv || []).forEach(l => {
                 if (start && l.date < start) return;
                 if (end && l.date > end) return;
-                (l.items || []).forEach(i => purchases += (i.costEx || 0) * (i.qty || 0));
+                purchases += (l.totalEx || 0);
             });
             (appData.logs_cn || []).forEach(l => {
                 if (start && l.date < start) return;
                 if (end && l.date > end) return;
-                (l.items || []).forEach(i => purchases -= (i.costEx || 0) * (i.qty || 0));
+                purchases -= (l.totalEx || 0);
             });
 
+            // --- Opening Stock: snapshot-based (Stable) ---
+            const searchDate = start || isoToday();
+            const priorSnaps = (appData.logs_snapshots || []).filter(s => s.date < searchDate).sort((a,b) => b.date.localeCompare(a.date));
+            const openingSnap = priorSnaps[0];
+            const stockValue = ingredients.reduce((acc, i) => acc + ((i.cost || 0) * (i.stock || 0)), 0);
+            
+            if (openingSnap) {
+                opening = openingSnap.value;
+            } else {
+                if (!appData.sessionOpeningStock) appData.sessionOpeningStock = {};
+                if (appData.sessionOpeningStock[searchDate] !== undefined) {
+                    opening = appData.sessionOpeningStock[searchDate];
+                } else {
+                    opening = (searchDate === isoToday()) ? stockValue : (stockValue * 0.95);
+                    appData.sessionOpeningStock[searchDate] = opening;
+                    saveData();
+                }
+            }
+
+            // --- Closing Stock: snapshot or current value (same logic as dashboard) ---
+            const endDate = end || isoToday();
+            const closingSnap = (appData.logs_snapshots || []).find(s => s.date === endDate);
+            closing = closingSnap ? closingSnap.value : stockValue;
+
+            // --- Adjustments & Wastage (same split logic as dashboard) ---
             (appData.logs_adj || []).forEach(l => {
                 const lDate = l.date || l.timestamp?.split('T')[0];
                 if (start && lDate < start) return;
                 if (end && lDate > end) return;
                 const val = (l.impactEx || 0);
-                if (l.mode === 'waste') wastage += val;
+                const note = (l.note || '').toLowerCase();
+                const isWastage = (l.mode === 'waste') || note.includes('waste') || note.includes('wastage');
+                if (isWastage) wastage += val;
                 else adjustments += val;
             });
 
+            // --- Count Variances ---
             (appData.logs_stocktakes || []).forEach(l => {
                 if (start && l.date < start) return;
                 if (end && l.date > end) return;
@@ -5504,16 +5798,20 @@
                 });
             });
 
+            // --- MFG Wastage (same as dashboard) ---
+            (appData.logs_mfg || []).forEach(l => {
+                if (start && l.date < start) return;
+                if (end && l.date > end) return;
+                if (!l.variance || l.variance <= 0) return;
+                const ingredientCostPerBatch = (l.components || []).reduce((sum, c) => sum + (c.qty / (l.expectedQty || 1)) * (c.cost || 0), 0);
+                wastage += (l.variance * ingredientCostPerBatch);
+            });
+
+            // --- Net Sales (for percentages) ---
             (appData.logs_sales || []).forEach(l => {
                 if (start && l.date < start) return;
                 if (end && l.date > end) return;
                 netSales += (l.totalSales || 0);
-                (l.details || []).forEach(d => { cosTh += (d.impact || 0); });
-            });
-
-            appData.ingredients.forEach(i => {
-                closing += (i.stock || 0) * (i.cost || 0);
-                opening += (i.stock || 0) * (i.cost || 0) * 0.98;
             });
 
             const cosActual = opening + purchases - closing;
@@ -5521,13 +5819,13 @@
 
             tbody.innerHTML = `
                 <tr class="border-b border-slate-100">
-                    <td class="px-10 py-10 text-center font-mono font-black text-lg">${formatCurrency(purchases)}</td>
-                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(opening)}</td>
-                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(closing)}</td>
-                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(variances)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(variances)}</span></td>
-                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(adjustments)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(adjustments)}</span></td>
-                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(wastage)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(wastage)}</span></td>
-                    <td class="px-10 py-10 text-center font-mono font-black text-lg text-emerald-600">${formatCurrency(cosActual)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(cosActual)}</span></td>
+                    <td class="px-10 py-10 text-center font-mono font-black text-lg">${formatCurrency(purchases, 2)}</td>
+                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(opening, 2)}</td>
+                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(closing, 2)}</td>
+                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(variances, 2)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(variances)}</span></td>
+                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(adjustments, 2)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(adjustments)}</span></td>
+                    <td class="px-6 py-10 text-center font-mono font-black text-lg">${formatCurrency(wastage, 2)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(wastage)}</span></td>
+                    <td class="px-10 py-10 text-center font-mono font-black text-lg text-emerald-600">${formatCurrency(cosActual, 2)} <br><span class="text-[10px] text-slate-400 font-bold">${formatPct(cosActual)}</span></td>
                 </tr>
             `;
         }
@@ -5537,6 +5835,7 @@
             const start = document.getElementById('reportStartDate')?.value || '';
             const end = document.getElementById('reportEndDate')?.value || '';
             const search = (document.getElementById('reportSearchInput')?.value || '').toLowerCase();
+            const locFilter = document.getElementById('reportLocationFilter')?.value || "";
 
             const movements = {};
 
@@ -5546,17 +5845,22 @@
                 if (end && lDate > end) return;
                 
                 (l.details || []).forEach(d => {
-                    if (!movements[d.ingId]) {
-                        movements[d.ingId] = {
+                    const locId = d.locId || 'main'; // Use specific locId if available
+                    if (locFilter && locId !== locFilter) return;
+                    const mKey = `${d.ingId}_${locId}`;
+                    
+                    if (!movements[mKey]) {
+                        movements[mKey] = {
                             ingId: d.ingId,
+                            locId: locId,
                             name: d.ingName,
                             qty: 0,
                             cost: d.cost || 0,
                             impact: 0
                         };
                     }
-                    movements[d.ingId].qty += (d.qtyDepleted || 0);
-                    movements[d.ingId].impact += (d.impact || 0);
+                    movements[mKey].qty += (d.qtyDepleted || 0);
+                    movements[mKey].impact += (d.impact || 0);
                 });
             });
 
@@ -5567,22 +5871,29 @@
             sorted.forEach(m => {
                 const ing = appData.ingredients.find(i => i.id == m.ingId);
                 const cat = ing?.category || 'General';
+                const loc = (appData.locations || []).find(l => l.id === m.locId)?.name || 'Main Store';
+                
                 tbody.innerHTML += `
                     <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 border-b border-slate-100 dark:border-slate-700/50 transition-colors uppercase text-[11px] font-black">
                         <td class="px-10 py-6 text-slate-700 dark:text-slate-100">${m.name}</td>
                         <td class="px-6 py-6 text-slate-500 dark:text-slate-400 capitalize">${cat}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${m.qty.toFixed(2)}</td>
-                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(m.cost)}</td>
-                        <td class="px-10 py-6 text-right font-mono text-emerald-600">${formatCurrency(m.impact)}</td>
+                        <td class="px-6 py-6 text-center text-blue-600">${loc}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${m.qty.toFixed(3)}</td>
+                        <td class="px-6 py-6 text-right font-mono text-slate-600 dark:text-slate-400">${formatCurrency(m.cost, 2)}</td>
+                        <td class="px-10 py-6 text-right font-mono text-emerald-600">${formatCurrency(m.impact, 2)}</td>
                     </tr>
                 `;
             });
         }
 
         function renderActivityLogReport() {
-            const tbody = document.getElementById('reportActivityLogBody');
-            const cards = document.getElementById('reportActivityLogCards');
-            if (!tbody && !cards) return;
+            try {
+                const tbody = document.getElementById('reportActivityLogBody');
+                const cards = document.getElementById('reportActivityLogCards');
+                if (!tbody && !cards) {
+                    console.error("Activity log containers not found");
+                    return;
+                }
             if (tbody) tbody.innerHTML = '';
             if (cards) cards.innerHTML = '';
             const start = document.getElementById('reportStartDate')?.value || '';
@@ -5592,37 +5903,58 @@
             let allLogs = [];
 
             (appData.logs_grv || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PURCHASE (GRV)', action: l.supplier, summary: `INV: ${l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'grv', color: 'blue' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'PURCHASE (GRV)', action: l.supplier || 'Unknown', summary: `INV: ${l.invoice || 'N/A'} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'grv', color: 'blue' });
             });
             (appData.logs_cn || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'CREDIT NOTE', action: l.supplier, summary: `CN: ${l.number || l.invoice} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'cn', color: 'amber' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'CREDIT NOTE', action: l.supplier || 'Unknown', summary: `CN: ${l.number || l.invoice || 'N/A'} - ${formatCurrency(l.totalEx || 0)}`, id: l.id, ltype: 'cn', color: 'amber' });
             });
             (appData.logs_adj || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'ADJUSTMENT', action: l.itemName, summary: `${l.mode}: ${l.qty} ${l.unit} (${formatCurrency(l.impactEx || 0)})`, id: l.id, ltype: 'adj', color: 'purple' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'ADJUSTMENT', action: l.itemName || 'Unknown', summary: `${l.mode || 'MOD'}: ${l.qty || 0} ${l.unit || 'units'} (${formatCurrency(l.impactEx || 0)})`, id: l.id, ltype: 'adj', color: 'purple' });
             });
             (appData.logs_stocktakes || []).forEach(l => {
+                const ts = l.timestamp || l.date || '';
                 const totalVarValue = (l.items || []).reduce((acc, i) => {
-                    const ing = appData.ingredients.find(ing => ing.id == i.id);
-                    return acc + (i.variance * (ing?.cost || 0));
+                    const ing = (appData.ingredients || []).find(ing => ing.id == i.id);
+                    return acc + ((i.variance || 0) * (ing?.cost || 0));
                 }, 0);
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'STOCK TAKE', action: 'FULL COUNT', summary: `VARIANCE: ${formatCurrency(totalVarValue)}`, id: l.id, ltype: 'stocktake', color: 'orange' });
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'STOCK TAKE', action: 'FULL COUNT', summary: `VARIANCE: ${formatCurrency(totalVarValue)}`, id: l.id, ltype: 'stocktake', color: 'orange' });
             });
             (appData.logs_mfg || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'PRODUCTION', action: l.itemName, summary: `PRODUCED: ${l.producedQty} ${l.unit}`, id: l.id, ltype: 'mfg', color: 'emerald' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'PRODUCTION', action: l.itemName || 'Unknown', summary: `PRODUCED: ${l.producedQty || 0} ${l.unit || 'units'}`, id: l.id, ltype: 'mfg', color: 'emerald' });
             });
             (appData.logs_transfers || []).forEach((l, idx) => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'TRANSFER', action: `${l.fromName} → ${l.toName}`, summary: `${(l.items || []).length} ITEMS MOVED`, id: l.id || idx, ltype: 'transfer', color: 'cyan' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'TRANSFER', action: `${l.fromName || 'N/A'} → ${l.toName || 'N/A'}`, summary: `${(l.items || []).length} ITEMS MOVED`, id: l.id || idx, ltype: 'transfer', color: 'cyan' });
             });
             (appData.logs_sales || []).forEach(l => {
-                allLogs.push({ ts: l.timestamp || l.date, date: l.date, type: 'SALES SYNC', action: 'DEPLETION', summary: `${l.itemsProcessed} PRODUCTS SYNCED`, id: l.timestamp, ltype: 'sales_details', color: 'rose' });
+                const ts = l.timestamp || l.date || '';
+                allLogs.push({ ts: ts, date: l.date || ts.split('T')[0], type: 'SALES SYNC', action: 'DEPLETION', summary: `${l.itemsProcessed || 0} PRODUCTS SYNCED`, id: l.timestamp || Date.now(), ltype: 'sales_details', color: 'rose' });
             });
 
             const filtered = allLogs.filter(l => {
-                if (start && l.date < start) return false;
-                if (end && l.date > end) return false;
-                if (search && !(l.type.toLowerCase().includes(search) || l.action.toLowerCase().includes(search) || l.summary.toLowerCase().includes(search))) return false;
+                // If there's a start/end filter, we only apply it if the log has a valid date
+                if (start && l.date && l.date < start) return false;
+                if (end && l.date && l.date > end) return false;
+                if (search && !(l.type.toLowerCase().includes(search) || (l.action && l.action.toLowerCase().includes(search)) || (l.summary && l.summary.toLowerCase().includes(search)))) return false;
                 return true;
-            }).sort((a,b) => b.ts.localeCompare(a.ts));
+            }).sort((a,b) => (b.ts || "").localeCompare(a.ts || ""));
+
+            console.log(`Activity Log: Raw=${allLogs.length}, Filtered=${filtered.length}`);
+
+            if (filtered.length === 0) {
+                const emptyHTML = `
+                    <tr class="uppercase text-[11px] font-black">
+                        <td colspan="5" class="px-10 py-12 text-center text-slate-400">No activity found matching your criteria.</td>
+                    </tr>
+                `;
+                if (tbody) tbody.innerHTML = emptyHTML;
+                if (cards) cards.innerHTML = `<div class="text-center p-8 text-slate-400 font-bold uppercase text-[11px]">No activity found matching your criteria.</div>`;
+                return;
+            }
 
             const colorMap = { blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300', amber: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300', purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300', orange: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300', emerald: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300', cyan: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300', rose: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300' };
 
@@ -5631,7 +5963,7 @@
                     ? `<button onclick="switchReportTab('sync_log')" class="p-2 text-blue-500 hover:text-blue-700"><i class="fa-solid fa-eye"></i></button>`
                     : `<button onclick="viewLogDetails('${l.ltype}', '${l.id}')" class="p-2 text-blue-500 hover:text-blue-700"><i class="fa-solid fa-eye"></i></button>`;
 
-                const displayTs = l.ts.replace('T', ' ').split('.')[0].replace(/-/g, '/');
+                const displayTs = (l.ts && typeof l.ts === 'string') ? l.ts.replace('T', ' ').split('.')[0].replace(/-/g, '/') : '---';
                 const badge = colorMap[l.color] || colorMap.blue;
 
                 // Desktop table row
@@ -5662,6 +5994,9 @@
                     `;
                 }
             });
+            } catch (err) {
+                console.error("Error rendering activity log:", err);
+            }
         }
 
         function renderSalesSyncLogReport() {
@@ -5966,9 +6301,9 @@
                 const bal = locId ? (i.balances?.[locId] || 0) : (i.stock || 0);
                 tbody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors uppercase text-[11px] font-black">
                     <td class="px-10 py-6 text-slate-800 dark:text-slate-200 uppercase text-wrap-fix">${i.name}<br><span class="text-[9px] opacity-30">${i.category}</span></td>
-                    <td class="px-6 py-6 text-right font-black font-mono">${bal.toFixed(2)} <span class="text-[9px] opacity-30">${i.unit || ""}</span></td>
-                    <td class="px-6 py-6 text-right font-mono opacity-40">${formatCurrency(i.cost)}</td>
-                    <td class="px-10 py-6 text-right font-black text-slate-900 dark:text-white font-mono">${formatCurrency(bal * i.cost)}</td>
+                    <td class="px-6 py-6 text-right font-black font-mono">${bal.toFixed(3)} <span class="text-[9px] opacity-30">${i.unit || ""}</span></td>
+                    <td class="px-6 py-6 text-right font-mono opacity-40">${formatCurrency(i.cost, 2)}</td>
+                    <td class="px-10 py-6 text-right font-black text-slate-900 dark:text-white font-mono">${formatCurrency(bal * i.cost, 2)}</td>
                 </tr>`;
             });
 
@@ -6408,25 +6743,73 @@
             let itemsSkipped = 0;
             const depletions = [];
 
-            // Ensure the de-duplication list exists
+            // 1. Location Validation Phase
+            const incomingLocations = new Set();
+            (data || []).forEach(row => {
+                const locName = String(row.Location || row.Store || '').trim();
+                if (locName) incomingLocations.add(locName);
+            });
+
+            const missingLocations = [];
+            incomingLocations.forEach(name => {
+                const found = (appData.locations || []).find(l => l.name.toLowerCase() === name.toLowerCase());
+                if (!found) missingLocations.push(name);
+            });
+
+            if (missingLocations.length > 0) {
+                const list = missingLocations.map(m => `• ${m}`).join('<br>');
+                const cont = document.getElementById('modal-container');
+                cont.innerHTML = `
+                    <div class="p-12 space-y-8 uppercase font-black">
+                        <div class="flex items-center gap-4 text-red-600">
+                            <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+                            <h3 class="text-3xl font-black tracking-tighter">Sync Blocked: Missing Locations</h3>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+                            <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed normal-case font-bold mb-4">
+                                The following locations found in your sales report do not exist in the application:
+                            </p>
+                            <div class="font-mono text-red-600 bg-red-50 dark:bg-red-900/20 p-4 rounded-xl mb-6">
+                                ${list}
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed normal-case font-bold">
+                                Please create these locations first in the <b>Sidebar -> Locations</b> section before attempting to sync sales.
+                            </p>
+                        </div>
+                        <div class="flex justify-end pt-4">
+                            <button onclick="closeModal()" class="btn-dark px-12 py-4 uppercase tracking-widest text-xs shadow-xl">Dismiss</button>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('modal-backdrop').classList.remove('hidden');
+                document.getElementById('modal-backdrop').classList.add('flex');
+                return;
+            }
+
+            // 2. Processing Phase
             if (!appData.processedSalesSignatures) appData.processedSalesSignatures = [];
 
             (data || []).forEach(row => {
                 const pname = String(row.Product || row.Name || row['Product Name'] || row.Item || '').trim();
-                // Expanded quantity mapping
                 const qtySold = parseFloat(String(
                     row.Quantity || row.Qty || row['Qty Sold'] || row['Quantity Sold'] || 
                     row['Qty.'] || row['Qty'] || row['Amount'] || row['Sold Qty'] || 0
                 ).replace(',', '.'));
                 
+                const locName = String(row.Location || row.Store || '').trim();
+                let locId = 'main';
+                if (locName) {
+                    const matchedLoc = (appData.locations || []).find(l => l.name.toLowerCase() === locName.toLowerCase());
+                    if (matchedLoc) locId = matchedLoc.id;
+                }
+
                 const nowTime = new Date().toLocaleTimeString();
                 const saleTime = String(row.Time || row['Sale Time'] || row.DateTime || row.Timestamp || nowTime).trim();
                 const saleDate = String(row.Date || row['Sale Date'] || today).trim();
                 
                 if (!pname || isNaN(qtySold) || qtySold <= 0) return;
 
-                // Create a unique signature for de-duplication
-                const signature = `${saleDate}|${saleTime}|${pname}|${qtySold.toFixed(4)}`;
+                const signature = `${saleDate}|${saleTime}|${pname}|${qtySold.toFixed(4)}|${locId}`;
                 if (appData.processedSalesSignatures.includes(signature)) {
                     itemsSkipped++;
                     return;
@@ -6446,7 +6829,7 @@
                     const amountToDeplete = ri.qty * qtySold;
                     const financialImpact = amountToDeplete * (ing.cost || 0);
                     
-                    updateIngBalance(ing.id, 'main', -amountToDeplete);
+                    updateIngBalance(ing.id, locId, -amountToDeplete);
                     totalDepletedValue += financialImpact;
 
                     depletions.push({
@@ -6456,13 +6839,13 @@
                         qtyDepleted: amountToDeplete,
                         cost: ing.cost || 0,
                         impact: financialImpact,
-                        qtySold: qtySold, // Store the original qty sold for reporting
-                        timestamp: saleTime // Use the shared saleTime
+                        qtySold: qtySold,
+                        timestamp: saleTime,
+                        locId: locId
                     });
                 });
             });
 
-            // Keep the signature list manageable (e.g., last 50,000 entries)
             if (appData.processedSalesSignatures.length > 50000) {
                 appData.processedSalesSignatures = appData.processedSalesSignatures.slice(-50000);
             }
@@ -7453,31 +7836,61 @@
             reader.onload = (e) => {
                 try {
                     const parsed = JSON.parse(e.target.result);
-                    if (!parsed || typeof parsed !== 'object') throw new Error('Invalid JSON');
+                    if (!parsed || typeof parsed !== 'object') throw new Error('Invalid JSON structure');
 
-                    // Basic shape validation + defaults
-                    const next = {
-                        products: parsed.products && typeof parsed.products === 'object' ? parsed.products : {},
-                        ingredients: Array.isArray(parsed.ingredients) ? parsed.ingredients : [],
-                        settings: parsed.settings && typeof parsed.settings === 'object' ? parsed.settings : {}
-                    };
+                    // 1. Comprehensive Restore - Ensure all keys are present
+                    const keys = [
+                        'products', 'ingredients', 'locations', 'settings', 
+                        'logs_grv', 'logs_cn', 'logs_adj', 'logs_stocktakes', 
+                        'logs_mfg', 'logs_sales', 'logs_transfers', 
+                        'logs_snapshots', 'processedSalesSignatures'
+                    ];
+                    
+                    const next = {};
+                    keys.forEach(k => {
+                        if (parsed[k]) {
+                            next[k] = parsed[k];
+                        } else {
+                            // Defaults for missing keys
+                            if (k === 'products') next[k] = {};
+                            else if (k === 'settings') next[k] = { vatRate: 15 };
+                            else next[k] = [];
+                        }
+                    });
+
+                    // 2. Validate Settings
                     if (typeof next.settings.vatRate !== 'number' || isNaN(next.settings.vatRate)) next.settings.vatRate = 15;
 
+                    // 3. Apply and Save
                     appData = next;
-                    saveData();
-                    updateFilterDropdowns();
-                    updateDashboard();
+                    try {
+                        saveData(); 
+                    } catch (storageErr) {
+                        console.error('Storage Error:', storageErr);
+                        throw new Error('Storage limit exceeded. Try clearing some old logs or snapshots first.');
+                    }
 
-                    // Refresh current view
-                    if (currentReportType) runActiveReportSearch();
-                    if (selectedProduct) { selectedProduct = null; document.getElementById('recipeEmptyState')?.classList.remove('hidden'); document.getElementById('recipeActiveState')?.classList.add('hidden'); }
-                    showToast('Snapshot imported', 'success');
-                    // Ensure settings UI reflects current values
+                    // 4. Refresh UI State
+                    const siteNameEl = document.getElementById('head-site-name');
+                    if (siteNameEl && appData.settings.siteName) siteNameEl.textContent = appData.settings.siteName;
+                    
                     const vatEl = document.getElementById('settingVatRate');
                     if (vatEl) vatEl.value = appData.settings.vatRate;
+
+                    const siteEl = document.getElementById('settingSiteName');
+                    if (siteEl) siteEl.value = appData.settings.siteName || '';
+
+                    if (currentReportType) runActiveReportSearch();
+                    if (selectedProduct) { 
+                        selectedProduct = null; 
+                        document.getElementById('recipeEmptyState')?.classList.remove('hidden'); 
+                        document.getElementById('recipeActiveState')?.classList.add('hidden'); 
+                    }
+
+                    showToast('SNAPSHOT RESTORED SUCCESSFULLY', 'success');
                 } catch (err) {
-                    console.error(err);
-                    showToast('Snapshot import failed', 'error');
+                    console.error('CRITICAL IMPORT ERROR:', err);
+                    showToast('CRITICAL RESTORE ERROR: ' + (err.message || 'Unknown'), 'error');
                 } finally {
                     const inp = document.getElementById('snapshotImportInput');
                     if (inp) inp.value = '';
@@ -7548,7 +7961,7 @@
                         const bal = locId ? (i.balances?.[locId] || 0) : (i.stock || 0);
                         const minStock = i.lowStockThreshold || 0;
                         const status = bal < minStock ? 'REORDER' : 'OK';
-                        return [i.name, i.unit || '', i.category || '', bal.toFixed(2), formatCurrency(i.cost), formatCurrency(bal * (i.cost || 0)), minStock.toFixed(2), status];
+                        return [i.name, i.unit || '', i.category || '', bal.toFixed(3), formatCurrency(i.cost), formatCurrency(bal * (i.cost || 0)), (minStock || 0).toFixed(3), status];
                     });
                 const totalVal = body.reduce((s, r) => s + parseFloat(r[5]?.replace(/[^0-9.-]/g, '') || 0), 0);
                 body.push(['', '', '', '', '', formatCurrency(totalVal), '', '']);
@@ -7699,7 +8112,7 @@
                                 idx === 0 ? new Date(l.timestamp).toLocaleString() : '',
                                 idx === 0 ? (l.fromName || 'Unknown') : '',
                                 idx === 0 ? (l.toName || 'Unknown') : '',
-                                itm.name, (itm.qty?.toFixed?.(2) || itm.qty), itm.unit || ''
+                                itm.name, (itm.qty?.toFixed?.(3) || itm.qty), itm.unit || ''
                             ]);
                         });
                     });
@@ -7707,42 +8120,68 @@
                 else downloadAOATableAsExcel(head, body, 'Transfer_Detail.xlsx', 'Transfer Detail');
 
             } else if (t === 'movement') {
-                // Stock Movement Report
-                const catFilter = document.getElementById('reportCategoryFilter')?.value || '';
+                const catId = document.getElementById('reportCategoryFilter')?.value || "";
+                const locId = document.getElementById('reportLocationFilter')?.value || "";
+                const locName = locId ? ((appData.locations || []).find(l => l.id === locId)?.name || locId) : "All Locations";
+                
                 const head = ['Item', 'Unit', 'Category', 'Opening', 'Purchases (net)', 'Sales Depletion', 'Adjustments', 'Closing Balance'];
                 const body = (appData.ingredients || [])
                     .filter(i => {
-                        const nameOk = (i.name || '').toLowerCase().includes(search);
-                        const catOk = !catFilter || i.category === catFilter;
-                        return nameOk && catOk;
+                        const nameMatch = (i.name || "").toLowerCase().includes(search);
+                        const catMatch = !catId || i.category === catId;
+                        return nameMatch && catMatch;
                     })
                     .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
                     .map(ing => {
                         const searchDate = start || isoToday();
                         const priorSnaps = (appData.logs_snapshots || []).filter(s => s.date < searchDate).sort((a,b) => b.date.localeCompare(a.date));
                         const openingSnap = priorSnaps[0];
-                        const opening = openingSnap ? (openingSnap.items?.[ing.id] || 0) : 0;
+                        
+                        let opening = 0;
+                        if (locId) {
+                            opening = openingSnap?.items_by_loc?.[locId]?.[ing.id] || 0;
+                        } else {
+                            opening = openingSnap?.items?.[ing.id] || 0;
+                        }
+
                         const purchases = (appData.logs_grv || [])
                             .filter(l => (!start || l.date >= start) && (!end || l.date <= end))
-                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0), 0)
+                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.qty || 0), 0), 0)
                             - (appData.logs_cn || [])
                             .filter(l => (!start || l.date >= start) && (!end || l.date <= end))
-                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0), 0);
+                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.qty || 0), 0), 0);
+
                         const sales = (appData.logs_sales || [])
                             .filter(l => (!start || l.date >= start) && (!end || l.date <= end))
-                            .reduce((acc, l) => acc + (l.details || []).filter(d => d.ingId == ing.id).reduce((sum, d) => sum + (d.qtyDepleted || 0), 0), 0);
+                            .reduce((acc, l) => acc + (l.details || []).filter(d => d.ingId == ing.id && (!locId || (d.locId || 'main') == locId)).reduce((sum, d) => sum + (d.qtyDepleted || 0), 0), 0);
+
                         const adjImpact = (appData.logs_adj || [])
                             .filter(l => (!start || l.date >= start) && (!end || l.date <= end))
-                            .filter(l => l.ingId == ing.id)
+                            .filter(l => l.ingId == ing.id && (!locId || l.locId == locId))
                             .reduce((acc, l) => acc + (l.impactQty || 0), 0);
+                        
                         const auditVar = (appData.logs_stocktakes || [])
                             .filter(l => (!start || l.date >= start) && (!end || l.date <= end))
-                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.variance || 0), 0), 0);
-                        const totalAdj = adjImpact + auditVar;
-                        return [ing.name, ing.unit || '', ing.category || '', opening.toFixed(2), purchases.toFixed(2), (-sales).toFixed(2), totalAdj.toFixed(2), (ing.stock || 0).toFixed(2)];
+                            .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.variance || 0), 0), 0);
+
+                        let transferImpact = 0;
+                        if (locId) {
+                            (appData.logs_transfers || []).forEach(l => {
+                                const d = l.timestamp.split('T')[0];
+                                if (start && d < start) return;
+                                if (end && d > end) return;
+                                if (l.fromId === locId) transferImpact -= (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0);
+                                if (l.toId === locId) transferImpact += (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0);
+                            });
+                        }
+
+                        const totalAdj = adjImpact + auditVar + transferImpact;
+                        const closingTheo = locId ? (ing.balances?.[locId] || 0) : (ing.stock || 0);
+
+                        return [ing.name, ing.unit || '', ing.category || '', opening.toFixed(3), purchases.toFixed(3), (-sales).toFixed(3), totalAdj.toFixed(3), closingTheo.toFixed(3)];
                     });
-                if (format === 'pdf') downloadAOATableAsPDF(`${siteName} - Stock Movement Report${dateRange}`, head, body, 'Stock_Movement.pdf');
-                else downloadAOATableAsExcel(head, body, 'Stock_Movement.xlsx', 'Stock Movement');
+                if (format === 'pdf') downloadAOATableAsPDF(`${siteName} - Stock Movement: ${locName}${dateRange}`, head, body, `Stock_Movement_${locName}.pdf`);
+                else downloadAOATableAsExcel(head, body, `Stock_Movement_${locName}.xlsx`, `Stock Movement - ${locName}`);
 
             } else if (t === 'missing_recipes') {
                 const head = ['Product Name', 'Category', 'Selling Price'];
@@ -7756,7 +8195,7 @@
                 else downloadAOATableAsExcel(head, body, 'Missing_Recipes.xlsx', 'Missing Recipes');
 
             } else if (t === 'ops_overview') {
-                const head = [['Inventory Category', 'Opening Stock', 'Purchases', 'Closing Stock', 'COS Actual', 'COS Theoretical', 'COS Difference']];
+                const head = ['Inventory Category', 'Opening Stock', 'Purchases', 'Closing Stock', 'COS Actual', 'COS Theoretical', 'COS Difference'];
                 const body = [];
                 document.querySelectorAll('#reportOpsOverviewBody tr').forEach(tr => {
                     const row = [];
@@ -7767,7 +8206,7 @@
                 else downloadAOATableAsExcel(head, body, 'Ops_Overview_ByCategory.xlsx', 'Ops Overview');
 
             } else if (t === 'ops_dashboard') {
-                const head = [['Purchases', 'Opening Stock', 'Closing Stock', 'Count Variances', 'Manual Adjustments', 'Wastage', 'Cost of Sales']];
+                const head = ['Purchases', 'Opening Stock', 'Closing Stock', 'Count Variances', 'Manual Adjustments', 'Wastage', 'Cost of Sales'];
                 const body = [];
                 const tr = document.querySelector('#reportOpsDashboardBody tr');
                 if (tr) {
@@ -7791,9 +8230,9 @@
                         const reorderVal = Math.abs(deficit) * (i.cost || 0);
                         const locBreakdown = (appData.locations || []).map(loc => {
                             const bal = i.balances?.[loc.id] || 0;
-                            return `${loc.name}: ${bal.toFixed(2)}`;
+                            return `${loc.name}: ${bal.toFixed(3)}`;
                         }).join('; ');
-                        return [i.name, i.category || '', i.unit || '', (i.stock || 0).toFixed(2), (i.lowStockThreshold || 0).toFixed(2), deficit.toFixed(2), formatCurrency(i.cost || 0), formatCurrency(reorderVal), locBreakdown];
+                        return [i.name, i.category || '', i.unit || '', (i.stock || 0).toFixed(3), (i.lowStockThreshold || 0).toFixed(3), deficit.toFixed(3), formatCurrency(i.cost || 0), formatCurrency(reorderVal), locBreakdown];
                     });
                 const totalReorder = body.reduce((s, r) => s + parseFloat(r[7]?.replace(/[^0-9.-]/g, '') || 0), 0);
                 body.push(['', '', '', '', '', '', '', formatCurrency(totalReorder), 'TOTAL REORDER VALUE']);
@@ -7801,7 +8240,7 @@
                 else downloadAOATableAsExcel(head, body, 'Low_Stock_Alerts.xlsx', 'Low Stock Alerts');
 
             } else if (t === 'sale_movement') {
-                const head = [['Ingredient', 'Category', 'Qty Depleted', 'Unit Cost', 'Total Impact (Ex)']];
+                const head = ['Ingredient', 'Category', 'Location', 'Qty Depleted', 'Unit Cost', 'Total Impact (Ex)'];
                 const body = [];
                 document.querySelectorAll('#reportSaleMovementBody tr').forEach(tr => {
                     const row = [];
@@ -7812,7 +8251,7 @@
                 else downloadAOATableAsExcel(head, body, 'Sale_Stock_Movement.xlsx', 'Sale Movement');
 
             } else if (t === 'sync_log') {
-                const head = [['Product', 'Qty Sold', 'COS Impact', 'Latest Sync']];
+                const head = ['Product', 'Qty Sold', 'COS Impact', 'Latest Sync'];
                 const body = [];
                 document.querySelectorAll('#reportSyncLogBody tr').forEach(tr => {
                     const row = [];
@@ -7822,7 +8261,7 @@
                 if (format === 'pdf') downloadAOATableAsPDF(`${siteName} - Sales Sync Log${dateRange}`, head, body, 'Sales_Sync_Log.pdf');
                 else downloadAOATableAsExcel(head, body, 'Sales_Sync_Log.xlsx', 'Sales Sync Log');
             } else if (t === 'activity_log') {
-                const head = [['Date / Time', 'Type', 'Action', 'Summary']];
+                const head = ['Date / Time', 'Type', 'Action', 'Summary'];
                 const body = [];
                 document.querySelectorAll('#reportActivityLogBody tr').forEach(tr => {
                     const row = [];
@@ -7852,8 +8291,8 @@
                 return [
                     ing.name,
                     ing.category || '',
-                    system.toFixed(2),
-                    shelf === '' ? '' : shelf.toString(),
+                    system.toFixed(3),
+                    shelf === '' ? '' : Number(shelf).toFixed(3),
                     impact
                 ];
             });
@@ -7982,6 +8421,7 @@
 
             const term = (document.getElementById('reportSearchInput')?.value || "").toLowerCase();
             const catFilter = (document.getElementById('reportCategoryFilter')?.value || "");
+            const locId = document.getElementById('reportLocationFilter')?.value || "";
             const startDate = document.getElementById('reportStartDate')?.value;
             const endDate = document.getElementById('reportEndDate')?.value;
 
@@ -7991,50 +8431,65 @@
                 return nameOk && catOk;
             }).sort((a, b) => a.name.localeCompare(b.name));
 
-            const meta = paginateItems(filtered, 'reportMovement', `${term}|${catFilter}`);
+            const meta = paginateItems(filtered, 'reportMovement', `${term}|${catFilter}|${locId}`);
 
             meta.pageItems.forEach(ing => {
                 const searchDate = startDate || isoToday();
-                // Find most recent snapshot older than the searchDate
                 const priorSnaps = (appData.logs_snapshots || []).filter(s => s.date < searchDate).sort((a,b) => b.date.localeCompare(a.date));
                 const openingSnap = priorSnaps[0];
-                const opening = openingSnap ? (openingSnap.items?.[ing.id] || 0) : 0;
+                
+                let opening = 0;
+                if (locId) {
+                    opening = openingSnap?.items_by_loc?.[locId]?.[ing.id] || 0;
+                } else {
+                    opening = openingSnap?.items?.[ing.id] || 0;
+                }
 
                 const purchases = (appData.logs_grv || [])
                     .filter(l => (!startDate || l.date >= startDate) && (!endDate || l.date <= endDate))
-                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0), 0)
+                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.qty || 0), 0), 0)
                     - (appData.logs_cn || [])
                     .filter(l => (!startDate || l.date >= startDate) && (!endDate || l.date <= endDate))
-                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0), 0);
+                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.qty || 0), 0), 0);
 
                 const sales = (appData.logs_sales || [])
                     .filter(l => (!startDate || l.date >= startDate) && (!endDate || l.date <= endDate))
-                    .reduce((acc, l) => acc + (l.details || []).filter(d => d.ingId == ing.id).reduce((sum, d) => sum + (d.qtyDepleted || 0), 0), 0);
+                    .reduce((acc, l) => acc + (l.details || []).filter(d => d.ingId == ing.id && (!locId || (d.locId || 'main') == locId)).reduce((sum, d) => sum + (d.qtyDepleted || 0), 0), 0);
 
                 const adjImpact = (appData.logs_adj || [])
                     .filter(l => (!startDate || l.date >= startDate) && (!endDate || l.date <= endDate))
-                    .filter(l => l.ingId == ing.id)
+                    .filter(l => l.ingId == ing.id && (!locId || l.locId == locId))
                     .reduce((acc, l) => acc + (l.impactQty || 0), 0);
                 
                 const auditVar = (appData.logs_stocktakes || [])
                     .filter(l => (!startDate || l.date >= startDate) && (!endDate || l.date <= endDate))
-                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.variance || 0), 0), 0);
+                    .reduce((acc, l) => acc + (l.items || []).filter(it => it.ingId == ing.id && (!locId || it.locationId == locId)).reduce((sum, it) => sum + (it.variance || 0), 0), 0);
 
-                const totalAdj = adjImpact + auditVar;
-                const closingTheo = ing.stock;
+                let transferImpact = 0;
+                if (locId) {
+                    (appData.logs_transfers || []).forEach(l => {
+                        const d = l.timestamp.split('T')[0];
+                        if (startDate && d < startDate) return;
+                        if (endDate && d > endDate) return;
+                        if (l.fromId === locId) transferImpact -= (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0);
+                        if (l.toId === locId) transferImpact += (l.items || []).filter(it => it.ingId == ing.id).reduce((sum, it) => sum + (it.qty || 0), 0);
+                    });
+                }
 
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors uppercase font-black text-[11px]";
-                tr.innerHTML = `
-                    <td class="px-10 py-5 text-slate-800 dark:text-slate-100 font-bold font-black uppercase text-[11px]">${ing.name}</td>
-                    <td class="px-6 py-5 text-center font-mono opacity-40 font-black">${opening.toFixed(2)}</td>
-                    <td class="px-6 py-5 text-center font-mono text-emerald-600 font-black">${purchases > 0 ? '+' : ''}${purchases.toFixed(2)}</td>
-                    <td class="px-6 py-5 text-center font-mono text-red-600 font-black">-${sales.toFixed(2)}</td>
-                    <td class="px-6 py-5 text-center font-mono ${totalAdj < 0 ? 'text-amber-600' : 'text-blue-600'} font-black">${totalAdj > 0 ? '+' : ''}${totalAdj.toFixed(2)}</td>
-                    <td class="px-6 py-5 text-center font-mono font-black">${closingTheo.toFixed(2)}</td>
-                    <td class="px-6 py-5 text-center opacity-40 uppercase font-black">${ing.unit || 'unit'}</td>
+                const totalAdj = adjImpact + auditVar + transferImpact;
+                const closingTheo = locId ? (ing.balances?.[locId] || 0) : (ing.stock || 0);
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors uppercase font-black text-[11px]">
+                        <td class="px-10 py-5 text-slate-800 dark:text-slate-100 font-bold font-black uppercase text-[11px]">${ing.name}</td>
+                        <td class="px-6 py-5 text-center font-mono opacity-40 font-black">${opening.toFixed(3)}</td>
+                        <td class="px-6 py-5 text-center font-mono text-emerald-600 font-black">${purchases > 0 ? '+' : ''}${purchases.toFixed(3)}</td>
+                        <td class="px-6 py-5 text-center font-mono text-red-600 font-black">-${sales.toFixed(3)}</td>
+                        <td class="px-6 py-5 text-center font-mono ${totalAdj < 0 ? 'text-amber-600' : 'text-blue-600'} font-black">${totalAdj > 0 ? '+' : ''}${totalAdj.toFixed(3)}</td>
+                        <td class="px-6 py-5 text-center font-mono font-black">${closingTheo.toFixed(3)}</td>
+                        <td class="px-6 py-5 text-center opacity-40 uppercase font-black">${ing.unit || 'unit'}</td>
+                    </tr>
                 `;
-                tbody.appendChild(tr);
             });
 
             renderPager('reportMovementPager', 'reportMovement', meta, 'renderStockMovementReport');
